@@ -164,7 +164,7 @@ public class FishingRodController : MonoBehaviour
 
         m_playerController.ToggleFreeLook(true, 0);
 
-        SoundManager.Instance.PlayClip(fishGot, 1f);
+        SoundManager.Instance.PlayClip(fishGot, .25f);
         SoundManager.Instance.StopSFX3();
         sfxPlaying = false;
     }
