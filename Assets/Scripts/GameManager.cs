@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         INSTANCE = this;
-        SoundManager.Instance.PlayMusic(ambient, 0f); // start playing the background music on start
-        SoundManager.Instance.PlayOcean(ocean, 0f);
+        SoundManager.Instance.PlayMusic(ambient, .25f); // start playing the background music on start
+        SoundManager.Instance.PlayOcean(ocean, .25f);
     }
 
     private void Update()

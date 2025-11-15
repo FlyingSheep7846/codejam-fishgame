@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("is walking");
             isWalking = true;
-            SoundManager.Instance.PlayLoop(SoundManager.Instance.walking, walking, 1f);
+            SoundManager.Instance.PlayLoop(SoundManager.Instance.walking, walking, .75f);
         }
         else if (!isMoving && isWalking)
         {
