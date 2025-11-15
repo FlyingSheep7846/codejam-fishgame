@@ -57,5 +57,11 @@ public class DayManager : MonoBehaviour
         environmentCamera.SetActive(!isPlayMode);
     }
 
+    public void BeginDay()
+    {
+        Timer.INSTANCE.time = 120f;
+        // tweak environment shit here ?
+    }
+
     
 }
