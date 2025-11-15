@@ -1,50 +1,64 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
-public class BasicFPSController : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class FPSController : MonoBehaviour
 {
     [Header("Movement")]
-    public float speed = 6f;
+    public float moveSpeed = 6f;
 
     [Header("Mouse Look")]
     public float mouseSensitivity = 150f;
 
-    private CharacterController controller;
-    private Vector3 velocity;
-    private float xRotation = 0f; // pitch
+    private Rigidbody rb;
+    private float xRotation = 0f;    // pitch
+    private float baseY;             // constant height
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked; // lock mouse
+        rb = GetComponent<Rigidbody>();
+
+        rb.freezeRotation = true;   // prevent physics from tipping us over
+        Cursor.lockState = CursorLockMode.Locked;
+
+        baseY = transform.position.y;  // lock height
     }
 
     void Update()
     {
-        MouseLook();
-        Movement();
+        Look();
     }
 
-    void MouseLook()
+    void FixedUpdate()
+    {
+        Move();
+        LockHeight();
+    }
+
+    void Look()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // Pitch (camera up/down)
+        // pitch (vertical rotation)
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -85f, 85f);
 
-        transform.localRotation = Quaternion.Euler(xRotation, transform.localEulerAngles.y + mouseX, 0f);
+        // Apply rotation
+        transform.rotation = Quaternion.Euler(
+            xRotation,
+            transform.eulerAngles.y + mouseX,
+            0f
+        );
     }
 
-    void Movement()
+    void Move()
     {
         float x = Input.GetAxis("Horizontal"); // A/D
         float z = Input.GetAxis("Vertical");   // W/S
 
-        // Camera-relative movement but horizontal only
+        // camera-relative horizontal movement
         Vector3 forward = transform.forward;
-        Vector3 right   = transform.right;
+        Vector3 right = transform.right;
 
         forward.y = 0f;
         right.y = 0f;
@@ -52,8 +66,20 @@ public class BasicFPSController : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        Vector3 move = (right * x + forward * z) * speed;
-        controller.Move(move * Time.deltaTime);
+        Vector3 moveDirection = (right * x + forward * z);
+
+        // set velocity directly (no vertical movement)
+        Vector3 newVelocity = moveDirection * moveSpeed;
+        newVelocity.y = rb.linearVelocity.y;   // keep any RB Y (if gravity on) or set to 0
+
+        rb.linearVelocity = newVelocity;
     }
 
+    void LockHeight()
+    {
+        // force height to remain constant
+        Vector3 pos = transform.position;
+        pos.y = baseY;
+        transform.position = pos;
+    }
 }
