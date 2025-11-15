@@ -29,10 +29,29 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private float fishProgress;
 
     [SerializeField] private Slider slider;
-
     [SerializeField] private CanvasGroup cg;
 
+    [SerializeField] private float progressIncrease;
+    [SerializeField] private float progressDecrease;
+
+    [Header("Testing")]
+    [SerializeField] private bool isTesting;
+
     private PlayerController playerController;
+
+    void Awake()
+    {
+        if (isTesting)
+        {
+            progressIncrease = 0f;
+            progressDecrease = 0f;
+        } 
+        else
+        {
+            this.enabled = false;
+            cg.alpha = 0f;
+        }     
+    }
 
     public PlayerController m_playerController
     {
@@ -45,6 +64,7 @@ public class FishingRodController : MonoBehaviour
         }
     }
 
+    [Header("Audio")]
     public AudioClip reeling;
     public AudioClip fishGot;
     public AudioClip fishLost;
@@ -117,10 +137,10 @@ public class FishingRodController : MonoBehaviour
 
         if (fishPos >= barY && fishPos <= barCap)
         {
-            slider.value += 0.3f * Time.deltaTime;
+            slider.value += progressIncrease * Time.deltaTime;
         } else
         {
-            slider.value -= 0.1f * Time.deltaTime;
+            slider.value -= progressDecrease * Time.deltaTime;
         }
 
         if (slider.value >= 1f)

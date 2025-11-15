@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class FishingSpot : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     [SerializeField] private float rotation;
+
+    void Awake()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
 
     private void OnTriggerEnter(Collider other)
     {

@@ -223,6 +223,10 @@ PrefabInstance:
       propertyPath: reeling
       value: 
       objectReference: {fileID: 8300000, guid: a7b21bcb155051246865b5ba9f4e2fbd, type: 3}
+    - target: {fileID: 4221467109386697756, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
+      propertyPath: isTesting
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -689,6 +693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 6
   mouseSensitivity: 100
+  freeLook: 1
 --- !u!54 &330585549
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -838,7 +843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43c8e93773454944ae3433f85fcc133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishingSpot
-  player: {fileID: 330585543}
   rotation: -180
 --- !u!1 &410087039
 GameObject:
@@ -1996,7 +2000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43c8e93773454944ae3433f85fcc133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishingSpot
-  player: {fileID: 330585543}
   rotation: 0
 --- !u!1 &1662157527
 GameObject:
@@ -2510,7 +2513,7 @@ Transform:
   m_GameObject: {fileID: 1899688516}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -4.37, y: 0.359, z: 1.79}
+  m_LocalPosition: {x: -4.02, y: 0.359, z: 1.79}
   m_LocalScale: {x: 9, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2528,7 +2531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43c8e93773454944ae3433f85fcc133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishingSpot
-  player: {fileID: 0}
   rotation: -90
 --- !u!65 &1899688519
 BoxCollider:

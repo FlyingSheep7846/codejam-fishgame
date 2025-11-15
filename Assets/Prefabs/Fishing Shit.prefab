@@ -428,7 +428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 362}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5818412104738553318
@@ -557,6 +557,7 @@ GameObject:
   - component: {fileID: 5650867717890431373}
   - component: {fileID: 4221467109386697756}
   - component: {fileID: 1985893162291600062}
+  - component: {fileID: 5760594391920916047}
   m_Layer: 5
   m_Name: Fishing
   m_TagString: Untagged
@@ -630,7 +631,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6628198966716842149}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43cd12cacf9df2b41b2b70be0a488398, type: 3}
   m_Name: 
@@ -647,6 +648,9 @@ MonoBehaviour:
   fishProgress: 0
   slider: {fileID: 2346289601812577904}
   cg: {fileID: 1985893162291600062}
+  progressIncrease: 0.2
+  progressDecrease: 0.1
+  isTesting: 1
   reeling: {fileID: 8300000, guid: a7b21bcb155051246865b5ba9f4e2fbd, type: 3}
   fishGot: {fileID: 8300000, guid: 33365a4af5d0c5345aabd90a012f6e9d, type: 3}
   fishLost: {fileID: 8300000, guid: 24202238ebe9b0e468548836a9c7dad7, type: 3}
@@ -658,10 +662,31 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6628198966716842149}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &5760594391920916047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628198966716842149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166b3d9b2668bd84193a4fe3c0c0901d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  fishRt: {fileID: 6466686331311568512}
+  fishMaxHeight: 650
+  timerIntervals:
+  - 0.4
+  - 1
+  maxSpeed: 5
+  inertia: 0.2
+  baseErratic: 0.5
+  erraticMultiplier: 1
 --- !u!1 &8446133446946143103
 GameObject:
   m_ObjectHideFlags: 0
