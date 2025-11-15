@@ -28,4 +28,8 @@ public class Timer : MonoBehaviour
         }
     } 
 
+    public float GetTimeRemaining()
+    {
+        return time;
+    }
 }

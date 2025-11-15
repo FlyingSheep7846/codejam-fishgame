@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
+    private CutsceneController cutsceneController;
+
+    void Awake()
+    {
+        cutsceneController = Object.FindAnyObjectByType<CutsceneController>();
+        this.enabled = false;
+    }
+
     public void GoToNextDay()
     {
         
@@ -12,7 +20,7 @@ public class MonsterManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             GoToNextDay();
-            UIOverlays.INSTANCE.TransitionDay();
+            
         }
     }
 }

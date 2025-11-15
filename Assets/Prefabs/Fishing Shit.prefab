@@ -640,8 +640,8 @@ MonoBehaviour:
   decreaseSpeed: 5
   minSpeed: -3
   maxSpeed: 5
-  resetMinSpeed: -0.5
-  resetMaxSpeed: 0.5
+  resetMinSpeed: -0.1
+  resetMaxSpeed: 0.1
   barRt: {fileID: 839074132353496825}
   fishRt: {fileID: 6466686331311568512}
   barVelocity: 0
