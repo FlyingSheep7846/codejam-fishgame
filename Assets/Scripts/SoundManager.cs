@@ -53,14 +53,22 @@ public class SoundManager : MonoBehaviour
         source.Play();
     }
 
+    public void StopMusicAndOcean()
+    {
+        ocean.Stop();
+        music.Stop();
+    }
+
     public void StopSFX1()
     {
         soundEffects1.Stop();
     }
+
     public void StopSFX2()
     {
         soundEffects2.Stop();
     }
+
     public void StopSFX3()
     {
         soundEffects3.Stop();
