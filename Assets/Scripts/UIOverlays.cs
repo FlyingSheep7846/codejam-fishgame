@@ -14,12 +14,10 @@ public class UIOverlays : MonoBehaviour
     [SerializeField] TextMeshProUGUI fishAmount;
 
     [SerializeField] CanvasGroup hideWhileFishing;
+    [SerializeField] CanvasGroup hideInCutscene;
 
     [SerializeField] private CanvasGroup blackOverlay;
     [SerializeField] private TextMeshProUGUI titleText;
-    [SerializeField] private TextMeshProUGUI descriptionText;
-
-    string NEW_DAY_DESCRIPTION = "The Monster was satisfied today.";
 
     public static UIOverlays INSTANCE;
 
@@ -51,26 +49,26 @@ public class UIOverlays : MonoBehaviour
 
     public void TransitionDay()
     {
+        DayManager.INSTANCE.TransitionDay(false);
         StartCoroutine("TransitionDayProcess"); 
     }
 
     IEnumerator TransitionDayProcess()
     {
-        titleText.text = "";
-        descriptionText.text = "";
-
-        blackOverlay.DOFade(1f, 1f);
+        hideInCutscene.alpha = 0f;
         yield return new WaitForSecondsRealtime(1f);
 
-        yield return StartCoroutine(TypewriterProcess(titleText, $"Day {GameManager.INSTANCE.currentDay + 1}"));
-        yield return StartCoroutine(TypewriterProcess(descriptionText, NEW_DAY_DESCRIPTION));
-
-        // do all ur shit here
-        yield return new WaitForSecondsRealtime(1f);
+        yield return StartCoroutine(TypewriterProcess(titleText, $"Day {DayManager.INSTANCE.currentDay}"));
         
-
-        blackOverlay.DOFade(0f, 1f);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(2f);
+        blackOverlay.DOFade(1f, 1f).OnComplete(
+            () => {
+                DayManager.INSTANCE.TransitionDay(true);
+                titleText.text = "";
+                hideInCutscene.alpha = 1f;
+                blackOverlay.DOFade(0f,1f);
+            }
+            );
 
     }
 

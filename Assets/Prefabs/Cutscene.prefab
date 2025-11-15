@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -221}
+  m_AnchoredPosition: {x: 100, y: -172}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &7982483288796368237
@@ -272,7 +272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -296}
+  m_AnchoredPosition: {x: 100, y: -247}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &786191925453795651
@@ -539,7 +539,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &7327169118884412599
 MonoBehaviour:
@@ -593,6 +593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02134678cbd70f24da96ec47d2cbd282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  amountText: {fileID: 3833038008125921834}
+  subtractText: {fileID: 849618047269158680}
+  descriptionText: {fileID: 5205665945476587581}
 --- !u!95 &8091418189149495963
 Animator:
   serializedVersion: 7
@@ -890,7 +893,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: -221.00002}
+  m_AnchoredPosition: {x: 25, y: -172.00002}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &2300509192777851157
@@ -939,7 +942,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8387072432662052192}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

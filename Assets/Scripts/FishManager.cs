@@ -18,7 +18,7 @@ public class FishManager : MonoBehaviour
 
     }
 
-    public float getFishCount()
+    public int getFishCount()
     {
         return fishCount;
     }
