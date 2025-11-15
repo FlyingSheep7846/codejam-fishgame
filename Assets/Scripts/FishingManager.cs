@@ -9,6 +9,7 @@ public class FishingManager : MonoBehaviour
     private float rotation;
 
     private FishingRodController fishingRodController;
+    public AudioClip waterSplash;
 
     void Awake()
     {
@@ -29,6 +30,7 @@ public class FishingManager : MonoBehaviour
     {
         fishingRodController.StartFish();
         playerController.ToggleFreeLook(false, rotation);
+        SoundManager.Instance.PlayClip(waterSplash, 1f);
     }
 
     public void CanFish(bool yes, float rotation)

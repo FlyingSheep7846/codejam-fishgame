@@ -45,6 +45,11 @@ public class FishingRodController : MonoBehaviour
         }
     }
 
+    public AudioClip reeling;
+    public AudioClip fishGot;
+    public AudioClip fishLost;
+    private bool sfxPlaying = false;
+
     public void StartFish()
     {
         slider.value = 0.3f;
@@ -70,9 +75,17 @@ public class FishingRodController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             barVelocity += increaseSpeed * deltaTime;
+            if (sfxPlaying == false)
+            {
+                sfxPlaying = true;
+                SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects3, reeling, 1);
+            }
+            
         } else
         {
             barVelocity -= decreaseSpeed * deltaTime;
+            SoundManager.Instance.StopSFX3();
+            sfxPlaying = false;
         }
 
         barVelocity = Mathf.Clamp(barVelocity, minSpeed, maxSpeed);
@@ -128,7 +141,12 @@ public class FishingRodController : MonoBehaviour
             () => UIOverlays.INSTANCE.ToggleFishingView(true)
         );
 
+
         m_playerController.ToggleFreeLook(true, 0);
+
+        SoundManager.Instance.PlayClip(fishGot, 1f);
+        SoundManager.Instance.StopSFX3();
+        sfxPlaying = false;
     }
 
     void FishFailed()
@@ -141,5 +159,9 @@ public class FishingRodController : MonoBehaviour
         );
 
         m_playerController.ToggleFreeLook(true, 0);
+
+        SoundManager.Instance.PlayClip(fishLost, 1f);
+        SoundManager.Instance.StopSFX3();
+        sfxPlaying= false;
     }
 }
