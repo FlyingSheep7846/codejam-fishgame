@@ -18,6 +18,10 @@ public class CutsceneController : MonoBehaviour
     private string SUCCESS_TEXT = "THE MONSTER WAS SATISFIED TODAY.";
     private string FAILED_TEXT = "THE MONSTER IS STILL HUNGRY...";
 
+    public AudioClip seagull;
+    public AudioClip monsterGurgle;
+
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -106,6 +110,16 @@ public class CutsceneController : MonoBehaviour
     public void ShowTextDone()
     {
         UIOverlays.INSTANCE.TransitionDay();
+    }
+
+    public void PlaySeagull()
+    {
+        SoundManager.Instance.PlayClip(seagull, 1f);
+    }
+
+    public void PlayGurgle()
+    {
+        SoundManager.Instance.PlayClip(monsterGurgle, .25f);
     }
 
 }

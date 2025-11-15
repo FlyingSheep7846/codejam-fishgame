@@ -18,15 +18,14 @@ public class DayManager : MonoBehaviour
     public List<int> fishNeeded;
     public int currentDay = 0;
 
+
     void Awake()
     {
         INSTANCE = this;
     }
 
     void Start(){
-
-        SoundManager.Instance.PlayMusic(ambient, .25f); // start playing the background music on start
-        SoundManager.Instance.PlayOcean(ocean, .25f);
+        StartAudios();
     }
 
     private void Update()
@@ -55,6 +54,16 @@ public class DayManager : MonoBehaviour
     {
         player.SetActive(isPlayMode);
         environmentCamera.SetActive(!isPlayMode);
+        if (isPlayMode)
+        {
+            StartAudios();
+        }
+    }
+
+    private void StartAudios()
+    {
+        SoundManager.Instance.PlayMusic(ambient, .25f); // start playing the background music on start
+        SoundManager.Instance.PlayOcean(ocean, .25f);
     }
 
     public void BeginDay()
