@@ -12,18 +12,24 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private CanvasGroup textCg;
 
     [SerializeField] private RectTransform upgradeParent;
-    private List<RectTransform> upgrades; 
+    [SerializeField] private RectTransform[] upgrades; 
 
     void Awake()
     {
         INSTANCE = this;
 
-        upgrades = upgradeParent.GetComponentsInChildren<RectTransform>().ToList();
-        upgrades.RemoveAt(0);
+        upgrades = GetComponentsInChildren<UpgradeButtonComponent>()
+            .Select(a => a.GetComponent<RectTransform>())
+            .Where(b => b != null)
+            .ToArray();
     }
 
     public void OpenUpgrades()
     {
+        Cursor.lockState = CursorLockMode.None;
+
+        backgroundCg.alpha = 1f;
+        Debug.Log(upgrades.Length);
         foreach (RectTransform rt in upgrades)
         {
             rt.GetComponent<CanvasGroup>().alpha = 0f;
@@ -35,17 +41,18 @@ public class UpgradeManager : MonoBehaviour
 
     IEnumerator OpenUpgradesProcess()
     {
-
+        textCg.DOFade(1f, 0.8f);
 
         foreach (RectTransform rt in upgrades)
         {
             rt.DOAnchorPosY(50f, 0.4f).SetRelative(true);
+            rt.GetComponent<CanvasGroup>().DOFade(1f, 0.4f).SetRelative(true);
             yield return new WaitForSecondsRealtime(0.3f);
         }
 
         yield return new WaitForSecondsRealtime(0.2f);
 
-        textCg.DOFade(1f, 0.8f);
+        
     }
 
     IEnumerator CloseUpgrades()
@@ -61,6 +68,7 @@ public class UpgradeManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.2f);
         backgroundCg.DOFade(0f, 0.5f);
 
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void SelectUpgrade(int upgrade)

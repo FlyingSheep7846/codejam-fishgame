@@ -69,6 +69,8 @@ public class DayManager : MonoBehaviour
     public void BeginDay()
     {
         Timer.INSTANCE.time = 120f;
+        TransitionDay(true);
+
         // tweak environment shit here ?
     }
 
