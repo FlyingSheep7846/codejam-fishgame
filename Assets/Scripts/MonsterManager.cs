@@ -12,7 +12,8 @@ public class MonsterManager : MonoBehaviour
 
     public void GoToNextDay()
     {
-        
+        DayManager.INSTANCE.NewDay();
+        cutsceneController.PlayCutscene();
     }
 
     void Update()
