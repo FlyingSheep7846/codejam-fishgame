@@ -19,8 +19,6 @@ public class UIOverlays : MonoBehaviour
     [SerializeField] private CanvasGroup blackOverlay;
     [SerializeField] private TextMeshProUGUI titleText;
 
-    string NEW_DAY_DESCRIPTION = "The Monster was satisfied today.";
-
     public static UIOverlays INSTANCE;
 
     void Awake()

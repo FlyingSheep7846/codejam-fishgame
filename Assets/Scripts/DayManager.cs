@@ -13,6 +13,8 @@ public class DayManager : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject environmentCamera;
 
+    [SerializeField] Transform playerRespawnSpot;
+
     public List<int> fishNeeded;
     public int currentDay = 0;
 
@@ -20,7 +22,7 @@ public class DayManager : MonoBehaviour
     {
         INSTANCE = this;
     }
-    
+
     void Start(){
 
         SoundManager.Instance.PlayMusic(ambient, .25f); // start playing the background music on start
@@ -42,7 +44,11 @@ public class DayManager : MonoBehaviour
         FishManager.INSTANCE.setFishCount(0);
         currentDay++;
 
-        // move player back to middle
+        Vector3 position = playerRespawnSpot.position;
+        position.y = player.transform.position.y;
+
+        player.transform.position = position;
+        player.transform.eulerAngles = new Vector3(0, -90, 0); 
     }
 
     public void TransitionDay(bool isPlayMode)
