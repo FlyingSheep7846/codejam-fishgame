@@ -87,6 +87,8 @@ public class DayManager : MonoBehaviour
         Timer.INSTANCE.time = 120f;
         FishManager.INSTANCE.setFishCount(0);
         currentDay++;
+        TransitionDay(true);
+
         // tweak environment shit here ?
     }
 
