@@ -3,6 +3,7 @@ using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class FishingRodController : MonoBehaviour
 {
@@ -28,6 +29,26 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private float fishProgress;
 
     [SerializeField] private Slider slider;
+
+    [SerializeField] private CanvasGroup cg;
+
+
+    public void StartFish()
+    {
+        slider.value = 0.3f;
+        this.enabled = true;
+        barVelocity = 0f;
+        amount = 0f;
+        visualAmount = 0f;
+        barY = 0f;
+
+        UIOverlays.INSTANCE.ToggleFishingView(false);
+        cg.DOFade(1f, 0.5f).OnComplete(
+            () => this.enabled = true
+        );
+
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -71,10 +92,38 @@ public class FishingRodController : MonoBehaviour
 
         if (fishPos >= barY && fishPos <= barCap)
         {
-            slider.value += 0.1f * Time.deltaTime;
+            slider.value += 0.3f * Time.deltaTime;
         } else
         {
             slider.value -= 0.1f * Time.deltaTime;
         }
+
+        if (slider.value >= 1f)
+        {
+            FishComplete();
+        } else if (slider.value <= 0f)
+        {
+            FishFailed();
+        }
+    }
+
+    void FishComplete()
+    {
+        this.enabled = false;
+        Debug.Log("Fish Succeeded");
+        FishManager.INSTANCE.AddFish();
+        cg.DOFade(0f, 0.5f).OnComplete(
+            () => UIOverlays.INSTANCE.ToggleFishingView(true)
+        );
+    }
+
+    void FishFailed()
+    {
+        this.enabled = false;
+        Debug.Log("Fish Failed");
+        Timer.INSTANCE.DecreaseTime();
+        cg.DOFade(0f, 0.5f).OnComplete(
+            () => UIOverlays.INSTANCE.ToggleFishingView(true)
+        );
     }
 }

@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class FishingSpot : MonoBehaviour
 {
-    public bool fishing = false;
     public GameObject player;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == player)
         {
-            fishing = true;
+            FishingManager.INSTANCE.CanFish(true);
+            UIOverlays.INSTANCE.ToggleFishIndicator(true);
         }
        
     }
@@ -18,7 +18,8 @@ public class FishingSpot : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            fishing = false;
+            FishingManager.INSTANCE.CanFish(false);
+            UIOverlays.INSTANCE.ToggleFishIndicator(false);
         }
     }
 }

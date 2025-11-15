@@ -4,10 +4,18 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] public float timeLimit = 120f;
     public bool dayOver = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public static Timer INSTANCE;
+
+    void Awake()
     {
-        
+        INSTANCE = this;
+        this.enabled = false;
+    }
+
+    public void DecreaseTime(float increment = 5f)
+    {
+        timeLimit -= increment;
     }
 
     // Update is called once per frame

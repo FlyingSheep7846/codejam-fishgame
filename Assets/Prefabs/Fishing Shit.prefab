@@ -196,7 +196,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.25
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 1624511284168107039}
   - component: {fileID: 8333810490422392861}
   - component: {fileID: 6821078010443515225}
+  - component: {fileID: 6154865496024713622}
   m_Layer: 5
   m_Name: Fishing Shit
   m_TagString: Untagged
@@ -302,6 +303,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6154865496024713622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908965891840952800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc7743f34d5d1a49a6bf2d3bf7bfcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  canFish: 0
 --- !u!1 &4111743703653972800
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +555,7 @@ GameObject:
   - component: {fileID: 2525842534882977099}
   - component: {fileID: 5650867717890431373}
   - component: {fileID: 4221467109386697756}
+  - component: {fileID: 1985893162291600062}
   m_Layer: 5
   m_Name: Fishing
   m_TagString: Untagged
@@ -614,7 +629,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6628198966716842149}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43cd12cacf9df2b41b2b70be0a488398, type: 3}
   m_Name: 
@@ -630,6 +645,19 @@ MonoBehaviour:
   barVelocity: 0
   fishProgress: 0
   slider: {fileID: 2346289601812577904}
+  cg: {fileID: 1985893162291600062}
+--- !u!225 &1985893162291600062
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628198966716842149}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &8446133446946143103
 GameObject:
   m_ObjectHideFlags: 0
