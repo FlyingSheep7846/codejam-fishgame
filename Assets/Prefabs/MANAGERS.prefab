@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ambient: {fileID: 8300000, guid: b55a050efa669b24d840d176100c2a5f, type: 3}
   heartbeat1: {fileID: 8300000, guid: 97279221a26d39147a965507e1046a1e, type: 3}
+  heartbeat2: {fileID: 8300000, guid: abcdf784654df8c4b9ba6f645989b5c9, type: 3}
   breathing: {fileID: 8300000, guid: a56bf2e08fa563449b9a77cb23c17a35, type: 3}
   ocean: {fileID: 8300000, guid: e37129aadac69324198c2d52c147c1f7, type: 3}
   player: {fileID: 0}
