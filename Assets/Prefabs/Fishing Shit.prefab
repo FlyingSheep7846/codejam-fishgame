@@ -317,6 +317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   canFish: 0
   waterSplash: {fileID: 8300000, guid: 417bd59553632b3448a0f3b6eda7424c, type: 3}
+  monsterRoar: {fileID: 0}
+  monsterKill: {fileID: 8300000, guid: 8bf8763246a7d134dafb7426c2b73880, type: 3}
 --- !u!1 &4111743703653972800
 GameObject:
   m_ObjectHideFlags: 0
