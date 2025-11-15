@@ -38,7 +38,7 @@ public class CutsceneController : MonoBehaviour
         subtractCg = subtractText.GetComponent<CanvasGroup>();
     }
 
-    private void Start()
+    private void SetFishValues()
     {
         fishHeld = FishManager.INSTANCE.getFishCount();
         fishNeeded = DayManager.INSTANCE.fishNeeded[DayManager.INSTANCE.currentDay];
@@ -46,10 +46,11 @@ public class CutsceneController : MonoBehaviour
 
     public void PlayCutscene()
     {
+        SetFishValues();
         animator.SetTrigger("Animate");
 
         amountText.text = FishManager.INSTANCE.getFishCount().ToString();
-        subtractText.text = (-DayManager.INSTANCE.fishNeeded[DayManager.INSTANCE.currentDay - 1]).ToString();
+        subtractText.text = (-DayManager.INSTANCE.fishNeeded[DayManager.INSTANCE.currentDay]).ToString();
         descriptionText.text = "";
 
         amountCg.alpha = 0f;
@@ -135,6 +136,7 @@ public class CutsceneController : MonoBehaviour
 
     public async void Failed()
     {
+        SetFishValues();
         if (fishHeld < fishNeeded)
         {
             SoundManager.Instance.PlayClip(monsterMunch, .75f);

@@ -40,19 +40,24 @@ public class DayManager : MonoBehaviour
 
         if (Timer.INSTANCE.time < 30f && sfx2Playing == false)
         {
-            sfx1Playing= false;
+            
             SoundManager.Instance.StopSFX4();
 
             sfx2Playing = true;
             SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects1, heartbeat1, 1f);
             SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects2, breathing, 1f);
         }
+        if(Timer.INSTANCE.time == 0f)
+        {
+            sfx1Playing = false;
+            sfx2Playing= false;
+        }
     }
 
     public void NewDay()
     {
-        FishManager.INSTANCE.setFishCount(0);
-        currentDay++;
+        //FishManager.INSTANCE.setFishCount(0);
+        
 
         Vector3 position = playerRespawnSpot.position;
         position.y = player.transform.position.y;
@@ -80,6 +85,8 @@ public class DayManager : MonoBehaviour
     public void BeginDay()
     {
         Timer.INSTANCE.time = 120f;
+        FishManager.INSTANCE.setFishCount(0);
+        currentDay++;
         // tweak environment shit here ?
     }
 
