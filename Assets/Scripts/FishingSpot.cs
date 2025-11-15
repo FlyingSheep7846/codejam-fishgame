@@ -22,4 +22,5 @@ public class FishingSpot : MonoBehaviour
             UIOverlays.INSTANCE.ToggleFishIndicator(false);
         }
     }
+
 }

@@ -15,7 +15,7 @@ public class FishingManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && canFish)
         {
             fishingRodController.StartFish();
         }
