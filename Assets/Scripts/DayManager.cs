@@ -6,9 +6,11 @@ public class DayManager : MonoBehaviour
     public static DayManager INSTANCE;
     public AudioClip ambient;
     public AudioClip heartbeat1;
+    public AudioClip heartbeat2;
     public AudioClip breathing;
     public AudioClip ocean;
-    private bool sfxPlaying = false;
+    private bool sfx2Playing = false;
+    private bool sfx1Playing = false;   
 
     [SerializeField] GameObject player;
     [SerializeField] GameObject environmentCamera;
@@ -30,9 +32,18 @@ public class DayManager : MonoBehaviour
 
     private void Update()
     {
-        if(Timer.INSTANCE.time < 30f && sfxPlaying == false)
+        if (Timer.INSTANCE.time < 60f && sfx1Playing == false)
         {
-            sfxPlaying = true;
+            sfx1Playing = true;
+            SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects4, heartbeat2, 1f);
+        }
+
+        if (Timer.INSTANCE.time < 30f && sfx2Playing == false)
+        {
+            sfx1Playing= false;
+            SoundManager.Instance.StopSFX4();
+
+            sfx2Playing = true;
             SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects1, heartbeat1, 1f);
             SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects2, breathing, 1f);
         }
