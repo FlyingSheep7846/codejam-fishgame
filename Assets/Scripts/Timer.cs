@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] public float timeLimit = 120f;
+    [SerializeField] public float time = 60f;
     public bool dayOver = false;
 
     public static Timer INSTANCE;
@@ -10,21 +10,22 @@ public class Timer : MonoBehaviour
     void Awake()
     {
         INSTANCE = this;
-        this.enabled = false;
+        this.enabled = true;
     }
 
     public void DecreaseTime(float increment = 5f)
     {
-        timeLimit -= increment;
+        time -= increment;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeLimit -= Time.deltaTime;
-        if (timeLimit < 0)
+        time -= Time.deltaTime;
+        if (time < 0)
         {
             dayOver = true;
         }
     } 
+
 }
