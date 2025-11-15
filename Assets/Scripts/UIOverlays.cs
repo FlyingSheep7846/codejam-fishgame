@@ -53,6 +53,11 @@ public class UIOverlays : MonoBehaviour
         StartCoroutine("TransitionDayProcess"); 
     }
 
+    public void CutToBlack()
+    {
+        blackOverlay.alpha = 1f;
+    }
+
     IEnumerator TransitionDayProcess()
     {
         hideInCutscene.alpha = 0f;

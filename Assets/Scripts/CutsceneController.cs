@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Threading.Tasks;
 using DG.Tweening;
-using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

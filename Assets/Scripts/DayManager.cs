@@ -20,7 +20,6 @@ public class DayManager : MonoBehaviour
     public List<int> fishNeeded;
     public int currentDay = 0;
 
-
     void Awake()
     {
         INSTANCE = this;
@@ -55,42 +54,42 @@ public class DayManager : MonoBehaviour
     }
 
     public void NewDay()
-    {
-        //FishManager.INSTANCE.setFishCount(0);
+        {
+            //FishManager.INSTANCE.setFishCount(0);
         
 
-        Vector3 position = playerRespawnSpot.position;
-        position.y = player.transform.position.y;
+            Vector3 position = playerRespawnSpot.position;
+            position.y = player.transform.position.y;
 
-        player.transform.position = position;
-        player.transform.eulerAngles = new Vector3(0, -90, 0); 
-    }
-
-    public void TransitionDay(bool isPlayMode)
-    {
-        player.SetActive(isPlayMode);
-        environmentCamera.SetActive(!isPlayMode);
-        if (isPlayMode)
-        {
-            StartAudios();
+            player.transform.position = position;
+            player.transform.eulerAngles = new Vector3(0, -90, 0); 
         }
-    }
 
-    private void StartAudios()
-    {
-        SoundManager.Instance.PlayMusic(ambient, .25f); // start playing the background music on start
-        SoundManager.Instance.PlayOcean(ocean, .25f);
-    }
+        public void TransitionDay(bool isPlayMode)
+        {
+            player.SetActive(isPlayMode);
+            environmentCamera.SetActive(!isPlayMode);
+            if (isPlayMode)
+            {
+                StartAudios();
+            }
+        }
 
-    public void BeginDay()
-    {
-        Timer.INSTANCE.time = 120f;
-        FishManager.INSTANCE.setFishCount(0);
-        currentDay++;
-        TransitionDay(true);
+        private void StartAudios()
+        {
+            SoundManager.Instance.PlayMusic(ambient, .25f); // start playing the background music on start
+            SoundManager.Instance.PlayOcean(ocean, .25f);
+        }
 
-        // tweak environment shit here ?
-    }
+        public void BeginDay()
+        {
+            Timer.INSTANCE.time = 120f;
+            FishManager.INSTANCE.setFishCount(0);
+            currentDay++;
+            TransitionDay(true);
+
+            // tweak environment shit here ?
+        }
 
     
-}
+    }
