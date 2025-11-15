@@ -32,6 +32,10 @@ public class FishingRodController : MonoBehaviour
 
     [SerializeField] private CanvasGroup cg;
 
+    public AudioClip reeling;
+    public AudioClip fishGot;
+    public AudioClip fishLost;
+    private bool sfxPlaying = false;
 
     public void StartFish()
     {
@@ -58,9 +62,17 @@ public class FishingRodController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             barVelocity += increaseSpeed * deltaTime;
+            if (sfxPlaying == false)
+            {
+                sfxPlaying = true;
+                SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects3, reeling, 1);
+            }
+            
         } else
         {
             barVelocity -= decreaseSpeed * deltaTime;
+            SoundManager.Instance.StopSFX3();
+            sfxPlaying = false;
         }
 
         barVelocity = Mathf.Clamp(barVelocity, minSpeed, maxSpeed);
@@ -115,6 +127,9 @@ public class FishingRodController : MonoBehaviour
         cg.DOFade(0f, 0.5f).OnComplete(
             () => UIOverlays.INSTANCE.ToggleFishingView(true)
         );
+        SoundManager.Instance.PlayClip(fishGot, 1f);
+        SoundManager.Instance.StopSFX3();
+        sfxPlaying = false;
     }
 
     void FishFailed()
@@ -125,5 +140,8 @@ public class FishingRodController : MonoBehaviour
         cg.DOFade(0f, 0.5f).OnComplete(
             () => UIOverlays.INSTANCE.ToggleFishingView(true)
         );
+        SoundManager.Instance.PlayClip(fishLost, 1f);
+        SoundManager.Instance.StopSFX3();
+        sfxPlaying= false;
     }
 }

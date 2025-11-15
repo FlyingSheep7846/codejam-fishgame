@@ -6,6 +6,7 @@ public class FishingManager : MonoBehaviour
     public bool canFish;
 
     private FishingRodController fishingRodController;
+    public AudioClip waterSplash;
 
     void Awake()
     {
@@ -18,6 +19,7 @@ public class FishingManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && canFish)
         {
             fishingRodController.StartFish();
+            SoundManager.Instance.PlayClip(waterSplash, 1f);
         }
     }
 
