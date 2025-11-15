@@ -19,6 +19,8 @@ public class DayManager : MonoBehaviour
     void Awake()
     {
         INSTANCE = this;
+    }
+    
     void Start(){
 
         SoundManager.Instance.PlayMusic(ambient, .25f); // start playing the background music on start
