@@ -23,7 +23,9 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private RectTransform barRt;
     [SerializeField] private RectTransform fishRt;
 
-    private float maxHeight = 500;
+    [SerializeField] float minPosY;
+    [SerializeField] float maxPosY;
+    
     [SerializeField] private float barVelocity;
 
     [SerializeField] private float fishProgress;
@@ -72,7 +74,7 @@ public class FishingRodController : MonoBehaviour
 
     public void StartFish()
     {
-        slider.value = 0.3f;
+        slider.value = 0.7f;
         this.enabled = true;
         barVelocity = 0f;
         amount = 0f;
@@ -125,28 +127,33 @@ public class FishingRodController : MonoBehaviour
         }
 
 
-        barY = Mathf.Lerp(0, maxHeight, visualAmount);
+        barY = Mathf.Lerp(minPosY, maxPosY, visualAmount);
         barRt.anchoredPosition = new Vector2(0, barY);
         CheckIfFishIn();
     }
 
+    public void DecreaseProgressBar(float increment)
+    {
+        slider.value -= increment;
+    }
+
     void CheckIfFishIn()
     {
-        float fishPos = fishRt.anchoredPosition.y + 25;
+        float fishPos = fishRt.anchoredPosition.y;
         float barCap = barY + barRt.sizeDelta.y;
 
         if (fishPos >= barY && fishPos <= barCap)
         {
-            slider.value += progressIncrease * Time.deltaTime;
+            slider.value -= progressIncrease * Time.deltaTime;
         } else
         {
-            slider.value -= progressDecrease * Time.deltaTime;
+            slider.value += progressDecrease * Time.deltaTime;
         }
 
-        if (slider.value >= 1f)
+        if (slider.value <= 0f)
         {
             FishComplete();
-        } else if (slider.value <= 0f)
+        } else if (slider.value >= 0f)
         {
             FishFailed();
         }
