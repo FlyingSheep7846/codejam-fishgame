@@ -1,7 +1,8 @@
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody))]
-public class FPSController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 6f;
@@ -12,6 +13,8 @@ public class FPSController : MonoBehaviour
     private Rigidbody rb;
     private float xRotation = 0f;    // pitch
     private float baseY;             // constant height
+
+    [SerializeField] private bool freeLook = true;
 
     void Start()
     {
@@ -25,13 +28,13 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
-        Look();
+        if (freeLook) Look();
     }
 
     void FixedUpdate()
     {
         Move();
-        LockHeight();
+        // LockHeight();
     }
 
     void Look()
@@ -81,5 +84,16 @@ public class FPSController : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y = baseY;
         transform.position = pos;
+    }
+
+    public void ToggleFreeLook(bool free, float rotation)
+    {
+        freeLook = free;
+
+        if (!freeLook)
+        {
+            Vector3 rot = new Vector3(0, rotation, 0);
+            transform.DORotate(rot, 0.5f);
+        }
     }
 }

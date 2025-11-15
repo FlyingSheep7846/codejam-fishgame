@@ -32,6 +32,18 @@ public class FishingRodController : MonoBehaviour
 
     [SerializeField] private CanvasGroup cg;
 
+    private PlayerController playerController;
+
+    public PlayerController m_playerController
+    {
+        get
+        {
+            if (playerController == null)
+                playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();   // expensive call
+
+            return playerController;
+        }
+    }
 
     public void StartFish()
     {
@@ -115,6 +127,8 @@ public class FishingRodController : MonoBehaviour
         cg.DOFade(0f, 0.5f).OnComplete(
             () => UIOverlays.INSTANCE.ToggleFishingView(true)
         );
+
+        m_playerController.ToggleFreeLook(true, 0);
     }
 
     void FishFailed()
@@ -125,5 +139,7 @@ public class FishingRodController : MonoBehaviour
         cg.DOFade(0f, 0.5f).OnComplete(
             () => UIOverlays.INSTANCE.ToggleFishingView(true)
         );
+
+        m_playerController.ToggleFreeLook(true, 0);
     }
 }
