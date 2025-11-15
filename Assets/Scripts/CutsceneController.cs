@@ -1,7 +1,10 @@
 using System.Collections;
+using System.Threading.Tasks;
 using DG.Tweening;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutsceneController : MonoBehaviour
 {
@@ -20,6 +23,11 @@ public class CutsceneController : MonoBehaviour
 
     public AudioClip seagull;
     public AudioClip monsterGurgle;
+    public AudioClip monsterMunch;
+
+    private int fishHeld;
+    private int fishNeeded;
+ 
 
 
     void Awake()
@@ -28,6 +36,12 @@ public class CutsceneController : MonoBehaviour
 
         amountCg = amountText.GetComponent<CanvasGroup>();
         subtractCg = subtractText.GetComponent<CanvasGroup>();
+    }
+
+    private void Start()
+    {
+        fishHeld = FishManager.INSTANCE.getFishCount();
+        fishNeeded = DayManager.INSTANCE.fishNeeded[DayManager.INSTANCE.currentDay];
     }
 
     public void PlayCutscene()
@@ -49,9 +63,6 @@ public class CutsceneController : MonoBehaviour
 
     IEnumerator ShowTextProcess()
     {
-        int fishHeld = FishManager.INSTANCE.getFishCount();
-        int fishNeeded = DayManager.INSTANCE.fishNeeded[DayManager.INSTANCE.currentDay - 1];
-
         bool success = fishHeld - fishNeeded >= 0;
 
         amountCg.DOFade(1f, 0.7f).SetUpdate(true);
@@ -114,12 +125,22 @@ public class CutsceneController : MonoBehaviour
 
     public void PlaySeagull()
     {
-        SoundManager.Instance.PlayClip(seagull, 1f);
+        SoundManager.Instance.PlayClip(seagull, .25f);
     }
 
     public void PlayGurgle()
     {
         SoundManager.Instance.PlayClip(monsterGurgle, .25f);
+    }
+
+    public async void Failed()
+    {
+        if (fishHeld < fishNeeded)
+        {
+            SoundManager.Instance.PlayClip(monsterMunch, .75f);
+            await Task.Delay(2000);
+            SceneManager.LoadScene("Death");
+        }
     }
 
 }
