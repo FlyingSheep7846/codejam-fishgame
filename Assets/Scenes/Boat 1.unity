@@ -219,10 +219,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fishing Shit
       objectReference: {fileID: 0}
-    - target: {fileID: 4221467109386697756, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
-      propertyPath: reeling
-      value: 
-      objectReference: {fileID: 8300000, guid: a7b21bcb155051246865b5ba9f4e2fbd, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
