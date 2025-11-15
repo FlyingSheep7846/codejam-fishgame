@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource soundEffects1;
     public AudioSource soundEffects2;
     public AudioSource soundEffects3;
+    public AudioSource ocean;
+    public AudioSource walking;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -23,6 +25,14 @@ public class SoundManager : MonoBehaviour
         music.loop = true;
         music.volume = vol; 
         music.Play();
+    }
+
+    public void PlayOcean(AudioClip clip, float vol)
+    {
+        ocean.clip = clip;
+        ocean.loop = true;
+        ocean.volume = vol;
+        ocean.Play();
     }
 
     public void PlayClip(AudioClip clip, float vol)
@@ -54,6 +64,11 @@ public class SoundManager : MonoBehaviour
     public void StopSFX3()
     {
         soundEffects3.Stop();
+    }
+
+    public void StopWalking()
+    {
+        walking.Stop();
     }
 
     public void StopAllSFX() // stops all overlaying audios other than the main bg audio

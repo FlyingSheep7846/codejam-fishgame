@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public AudioClip ambient;
     public AudioClip heartbeat1;
     public AudioClip breathing;
+    public AudioClip ocean;
     private bool sfxPlaying = false;
 
     public List<int> fishNeeded;
@@ -15,7 +16,8 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         INSTANCE = this;
-        SoundManager.Instance.PlayMusic(ambient, .25f); // start playing the background music on start
+        SoundManager.Instance.PlayMusic(ambient, 0f); // start playing the background music on start
+        SoundManager.Instance.PlayOcean(ocean, 0f);
     }
 
     private void Update()

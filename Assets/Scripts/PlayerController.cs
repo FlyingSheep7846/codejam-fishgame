@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private bool freeLook = true;
 
+    public AudioClip walking;
+    private bool isWalking = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -58,6 +61,21 @@ public class PlayerController : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal"); // A/D
         float z = Input.GetAxis("Vertical");   // W/S
+
+        bool isMoving = (x != 0 || z != 0);
+
+        if (isMoving && !isWalking)
+        {
+            Debug.Log("is walking");
+            isWalking = true;
+            SoundManager.Instance.PlayLoop(SoundManager.Instance.walking, walking, 1f);
+        }
+        else if (!isMoving && isWalking)
+        {
+            Debug.Log("is not walking");
+            isWalking = false;
+            SoundManager.Instance.StopWalking();
+        }
 
         // camera-relative horizontal movement
         Vector3 forward = transform.forward;
