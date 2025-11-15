@@ -596,6 +596,8 @@ MonoBehaviour:
   amountText: {fileID: 3833038008125921834}
   subtractText: {fileID: 849618047269158680}
   descriptionText: {fileID: 5205665945476587581}
+  seagull: {fileID: 8300000, guid: d3135e484b610d54fa6f554749a49417, type: 3}
+  monsterGurgle: {fileID: 8300000, guid: fac632ce19cf9e34f86241408dc38468, type: 3}
 --- !u!95 &8091418189149495963
 Animator:
   serializedVersion: 7
