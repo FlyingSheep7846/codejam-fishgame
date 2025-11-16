@@ -1,5 +1,5 @@
 using TMPro;
-using UnityEditor.Rendering;
+
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
@@ -65,11 +65,6 @@ public class UIOverlays : MonoBehaviour
     public void CutToBlack()
     {
         blackOverlay.alpha = 1f;
-    }
-
-    public void FadeBlack(float duration = 0.8f)
-    {
-        blackOverlay.DOFade(1f, duration);   
     }
 
     IEnumerator TransitionDayProcess()
