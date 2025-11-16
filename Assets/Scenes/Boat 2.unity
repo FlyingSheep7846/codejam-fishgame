@@ -2115,11 +2115,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6013207573355794898, guid: a88fe761b9abada42a792490625d639f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -695
+      value: -735
       objectReference: {fileID: 0}
     - target: {fileID: 6791074010709229905, guid: a88fe761b9abada42a792490625d639f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 495
+      value: 515
+      objectReference: {fileID: 0}
+    - target: {fileID: 6844996489878182199, guid: a88fe761b9abada42a792490625d639f, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6844996489878182199, guid: a88fe761b9abada42a792490625d639f, type: 3}
       propertyPath: m_SizeDelta.y
