@@ -61,6 +61,8 @@ public class UIOverlays : MonoBehaviour
     IEnumerator TransitionDayProcess()
     {
         hideInCutscene.alpha = 0f;
+        Timer.INSTANCE.StartCoroutine("TimerReset");
+
         yield return new WaitForSecondsRealtime(1f);
 
         yield return StartCoroutine(TypewriterProcess(titleText, $"Day {DayManager.INSTANCE.currentDay}"));
