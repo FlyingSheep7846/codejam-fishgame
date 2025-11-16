@@ -27,6 +27,7 @@ public class QTEController : MonoBehaviour
     private bool isInQte = false;
 
     public AudioClip failed;
+    public AudioClip ring;
 
     // Update is called once per frame
     void Update()
@@ -74,6 +75,7 @@ public class QTEController : MonoBehaviour
 
         qteCg.alpha = 1f;
         slider.value = 1f;
+        SoundManager.Instance.PlayClip(ring, 1f);
     }
 
     void CompleteQTE()

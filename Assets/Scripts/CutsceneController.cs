@@ -159,6 +159,14 @@ public class CutsceneController : MonoBehaviour
         SoundManager.Instance.PlayClip(monsterGurgle, .25f);
     }
 
+    public void Win()
+    {
+        if (DayManager.INSTANCE.currentDay >= 4)
+        {
+            SceneManager.LoadScene("Win");
+        }
+    }
+
     public async void Failed()
     {
         SetFishValues();
