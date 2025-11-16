@@ -26,6 +26,7 @@ public class QTEController : MonoBehaviour
 
     private bool isInQte = false;
 
+    public AudioClip failed;
 
     // Update is called once per frame
     void Update()
@@ -88,6 +89,7 @@ public class QTEController : MonoBehaviour
         qteIntervalTimer = QteInterval;
         fishingRodController.DecreaseProgressBar(failedDecreaseAmount);
         qteCg.DOFade(0f,0.5f);
+        SoundManager.Instance.PlayClip(failed, 1f);
     }
 
     void CheckForInput(KeyCode qte)

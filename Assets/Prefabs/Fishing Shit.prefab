@@ -342,6 +342,7 @@ MonoBehaviour:
   failedDecreaseAmount: 0.15
   fishingRodController: {fileID: 4221467109386697756}
   text: {fileID: 8639074656088652405}
+  failed: {fileID: 8300000, guid: 4c78d85025dcd274083279d1fdea906e, type: 3}
 --- !u!225 &4473535327199820704
 CanvasGroup:
   m_ObjectHideFlags: 0
