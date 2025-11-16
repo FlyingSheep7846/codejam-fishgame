@@ -273,6 +273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6211846975426301178}
+  - component: {fileID: 4210260751183025963}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -299,6 +300,22 @@ Transform:
   - {fileID: 6666021043767945784}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4210260751183025963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447842700441552577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569987f78b9564ff89de8c2f5bca2b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bobbing
+  bobHeight: 0.05
+  bobSpeed: 1.2
+  tiltAmount: 1
+  tiltSpeed: 0.8
 --- !u!1 &2468805932596167283
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 2468805932596167283}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.3420201, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 5.66, y: 2.678, z: 1.446}
+  m_LocalPosition: {x: 5.66, y: 2.678, z: 1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -823,7 +840,7 @@ Transform:
   m_GameObject: {fileID: 6291014227586950077}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.3420201, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 5.66, y: 2.678, z: -1.446}
+  m_LocalPosition: {x: 5.66, y: 2.678, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class UIOverlays : MonoBehaviour
 {
@@ -18,6 +19,14 @@ public class UIOverlays : MonoBehaviour
 
     [SerializeField] private CanvasGroup blackOverlay;
     [SerializeField] private TextMeshProUGUI titleText;
+
+    private Dictionary<int, string> intNumbers = new Dictionary<int, string>
+    {
+        {0, "TWO"},
+        {1, "THREE"},
+        {2, "FOUR"},
+        {3, "FIVE"},
+    };
 
     public static UIOverlays INSTANCE;
 
@@ -65,7 +74,7 @@ public class UIOverlays : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(1f);
 
-        yield return StartCoroutine(TypewriterProcess(titleText, $"Day {DayManager.INSTANCE.currentDay}"));
+        yield return StartCoroutine(TypewriterProcess(titleText, $"DAY {intNumbers[DayManager.INSTANCE.currentDay]}"));
         
         yield return new WaitForSecondsRealtime(2f);
         blackOverlay.DOFade(1f, 1f).OnComplete(

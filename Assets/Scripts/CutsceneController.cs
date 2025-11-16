@@ -18,6 +18,7 @@ public class CutsceneController : MonoBehaviour
     private CanvasGroup subtractCg;
 
     private string SUCCESS_TEXT = "THE MONSTER WAS SATISFIED TODAY.";
+    private string SUCCESS_TEXT2 = "TOMORROW IT WILL BE HUNGRIER.";
     private string FAILED_TEXT = "THE MONSTER IS STILL HUNGRY...";
 
     public AudioClip seagull;
@@ -140,7 +141,7 @@ public class CutsceneController : MonoBehaviour
         {
             CameraShaker.Instance.StopShaking();
             SoundManager.Instance.PlayClip(monsterMunch, .75f);
-            await Task.Delay(2000);
+            await Task.Delay(1500);
             SceneManager.LoadScene("Death");
         }
     }
