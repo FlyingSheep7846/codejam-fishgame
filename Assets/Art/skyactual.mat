@@ -68,10 +68,10 @@ Material:
     - _ZenithBlendPower: 10.59
     - _distortionScale: 0
     m_Colors:
-    - _CloudColor: {r: 0.7757624, g: 0.7748313, b: 0.7748313, a: 0}
+    - _CloudColor: {r: 0.48714384, g: 0.48200482, b: 0.48200482, a: 0}
     - _CloudTiling: {r: 0, g: 0, b: 0, a: 0}
-    - _HorizonColor: {r: 0.21841551, g: 0.2908178, b: 0.36545408, a: 0}
-    - _NadirColor: {r: 0.5424097, g: 0.6902831, b: 0.779695, a: 0}
+    - _HorizonColor: {r: 0.27638462, g: 0.11381003, b: 0.14110334, a: 0}
+    - _NadirColor: {r: 0.28212824, g: 0.33620325, b: 0.36889976, a: 0}
     - _SunColor: {r: 0, g: 0, b: 0, a: 1}
     - _ZenithColor: {r: 0.5813902, g: 0.6016376, b: 0.6132076, a: 1}
   m_BuildTextureStacks: []
