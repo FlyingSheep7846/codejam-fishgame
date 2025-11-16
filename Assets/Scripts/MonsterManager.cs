@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
@@ -13,6 +14,9 @@ public class MonsterManager : MonoBehaviour
 
     public void GoToNextDay()
     {
+        Timer.INSTANCE.time = 0f;
+        Timer.INSTANCE.running = false;
+
         DayManager.INSTANCE.NewDay();
         cutsceneController.PlayCutscene();
     }
@@ -25,6 +29,7 @@ public class MonsterManager : MonoBehaviour
             SoundManager.Instance.PlayClip(door, 1f);
             SoundManager.Instance.StopMusicAndOcean();
             SoundManager.Instance.StopAllSFX();
+            CameraShaker.Instance.StopShaking();
             
         }
     }

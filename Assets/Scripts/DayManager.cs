@@ -12,8 +12,8 @@ public class DayManager : MonoBehaviour
     private bool sfx2Playing = false;
     private bool sfx1Playing = false;   
 
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject environmentCamera;
+    private GameObject player;
+    private GameObject environmentCamera;
 
     [SerializeField] Transform playerRespawnSpot;
 
@@ -23,6 +23,9 @@ public class DayManager : MonoBehaviour
     void Awake()
     {
         INSTANCE = this;
+
+        player = GameObject.FindWithTag("Player");
+        environmentCamera = GameObject.FindWithTag("MainCamera");
     }
 
     void Start(){
@@ -46,17 +49,20 @@ public class DayManager : MonoBehaviour
             SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects1, heartbeat1, 1f);
             SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects2, breathing, 1f);
         }
-        if(Timer.INSTANCE.time == 0f)
+        if(Timer.INSTANCE.time < 0f)
         {
-            sfx1Playing = false;
-            sfx2Playing= false;
+            //sfx1Playing = false;
+            //sfx2Playing= false;
+            if (!CameraShaker.Instance.isShaking)
+            {
+                CameraShaker.Instance.ShakeCamera();
+            }
         }
     }
 
     public void NewDay()
         {
             //FishManager.INSTANCE.setFishCount(0);
-        
 
             Vector3 position = playerRespawnSpot.position;
             position.y = player.transform.position.y;
@@ -83,7 +89,7 @@ public class DayManager : MonoBehaviour
 
         public void BeginDay()
         {
-            Timer.INSTANCE.time = 120f;
+            Timer.INSTANCE.running = true;
             FishManager.INSTANCE.setFishCount(0);
             currentDay++;
             TransitionDay(true);

@@ -1,8 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] public float time = 60f;
+    public float timeInADay = 60f;
+
+    public bool running = true;
     public bool dayOver = false;
 
     public static Timer INSTANCE;
@@ -15,7 +19,7 @@ public class Timer : MonoBehaviour
 
     public void DecreaseTime(float increment = 5f)
     {
-        time -= increment;
+        if (running) time -= increment;
     }
 
     // Update is called once per frame
@@ -31,5 +35,18 @@ public class Timer : MonoBehaviour
     public float GetTimeRemaining()
     {
         return time;
+    }
+
+    public IEnumerator TimerReset(float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float t = elapsed / duration;
+            time = Mathf.Lerp(0, timeInADay, t);
+            yield return null;
+        }
     }
 }
