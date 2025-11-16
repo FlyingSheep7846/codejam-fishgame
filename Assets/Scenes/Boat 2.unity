@@ -629,6 +629,7 @@ PrefabInstance:
     - target: {fileID: 5585562559210967426, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
       propertyPath: m_Color.r
       value: 0.24705882
+      objectReference: {fileID: 0}
     - target: {fileID: 6154865496024713622, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
       propertyPath: canFish
       value: 0
@@ -2063,6 +2064,10 @@ PrefabInstance:
     - target: {fileID: 3089123196838384010, guid: a88fe761b9abada42a792490625d639f, type: 3}
       propertyPath: m_Name
       value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089123196838384010, guid: a88fe761b9abada42a792490625d639f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7480176755868405361, guid: a88fe761b9abada42a792490625d639f, type: 3}
       propertyPath: m_Pivot.x
