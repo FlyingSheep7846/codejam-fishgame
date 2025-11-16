@@ -29,6 +29,10 @@ public class UpgradeManager : MonoBehaviour
             .Select(a => a.GetComponent<RectTransform>())
             .Where(b => b != null)
             .ToArray();
+
+        fishingRodController = Object.FindAnyObjectByType<FishingRodController>();
+        qteController = Object.FindAnyObjectByType<QTEController>();
+        fishController = Object.FindAnyObjectByType<FishController>();
     }
 
     public void OpenUpgrades()

@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private float xRotation = 0f;    // pitch
     private float baseY;             // constant height
 
+    private Transform cameraTransform;
+
     [SerializeField] private bool free = true;
 
     public AudioClip walking;
@@ -22,6 +24,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        cameraTransform = transform.GetChild(0);
 
         rb.freezeRotation = true;   // prevent physics from tipping us over
         Cursor.lockState = CursorLockMode.Locked;
@@ -45,17 +49,16 @@ public class PlayerController : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // pitch (vertical rotation)
+        // --- YAW (left-right) ---
+        transform.Rotate(Vector3.up * mouseX);
+
+        // --- PITCH (up-down) ---
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -85f, 85f);
 
-        // Apply rotation
-        transform.rotation = Quaternion.Euler(
-            xRotation,
-            transform.eulerAngles.y + mouseX,
-            0f
-        );
+        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
+
 
     void Move()
     {
@@ -78,8 +81,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // camera-relative horizontal movement
-        Vector3 forward = transform.forward;
-        Vector3 right = transform.right;
+        Vector3 forward = cameraTransform.forward;
+        Vector3 right = cameraTransform.right;
 
         forward.y = 0f;
         right.y = 0f;
@@ -111,7 +114,7 @@ public class PlayerController : MonoBehaviour
         if (!free)
         {
             Vector3 rot = new Vector3(0, rotation, 0);
-            transform.DORotate(rot, 0.5f);
+            cameraTransform.DORotate(rot, 0.5f);
         }
     }
 }
