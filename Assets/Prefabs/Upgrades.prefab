@@ -792,6 +792,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Tighter Reels
       objectReference: {fileID: 0}
+    - target: {fileID: 6734180700090931035, guid: 7b81f49a1e1ea7f44bcb7230bc5dc29d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 51dbe8fd3d198f541a2093f7e92d4eeb, type: 3}
     - target: {fileID: 9009075285921772068, guid: 7b81f49a1e1ea7f44bcb7230bc5dc29d, type: 3}
       propertyPath: upgradeId
       value: 1

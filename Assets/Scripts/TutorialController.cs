@@ -92,5 +92,4 @@ public class Tutorial : MonoBehaviour
         playerController.ToggleFreeLook(true, 0);
         Cursor.lockState = CursorLockMode.Locked;
     }
-
 }
