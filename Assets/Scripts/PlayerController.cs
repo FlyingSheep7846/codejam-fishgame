@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
         if (!free)
         {
             Vector3 rot = new Vector3(0, rotation, 0);
+            transform.DORotate(rot, 0.5f);
             cameraTransform.DORotate(rot, 0.5f);
         }
     }
