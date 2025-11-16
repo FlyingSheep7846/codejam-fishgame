@@ -3,6 +3,7 @@ using UnityEngine;
 public class MonsterManager : MonoBehaviour
 {
     private CutsceneController cutsceneController;
+    public AudioClip door;
 
     void Awake()
     {
@@ -21,6 +22,9 @@ public class MonsterManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             GoToNextDay();
+            SoundManager.Instance.PlayClip(door, 1f);
+            SoundManager.Instance.StopMusicAndOcean();
+            SoundManager.Instance.StopAllSFX();
             
         }
     }

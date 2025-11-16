@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutsceneController : MonoBehaviour
 {
@@ -18,6 +20,15 @@ public class CutsceneController : MonoBehaviour
     private string SUCCESS_TEXT = "THE MONSTER WAS SATISFIED TODAY.";
     private string FAILED_TEXT = "THE MONSTER IS STILL HUNGRY...";
 
+    public AudioClip seagull;
+    public AudioClip monsterGurgle;
+    public AudioClip monsterMunch;
+
+    private int fishHeld;
+    private int fishNeeded;
+ 
+
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -26,12 +37,19 @@ public class CutsceneController : MonoBehaviour
         subtractCg = subtractText.GetComponent<CanvasGroup>();
     }
 
+    private void SetFishValues()
+    {
+        fishHeld = FishManager.INSTANCE.getFishCount();
+        fishNeeded = DayManager.INSTANCE.fishNeeded[DayManager.INSTANCE.currentDay];
+    }
+
     public void PlayCutscene()
     {
+        SetFishValues();
         animator.SetTrigger("Animate");
 
         amountText.text = FishManager.INSTANCE.getFishCount().ToString();
-        subtractText.text = (-DayManager.INSTANCE.fishNeeded[DayManager.INSTANCE.currentDay - 1]).ToString();
+        subtractText.text = (-DayManager.INSTANCE.fishNeeded[DayManager.INSTANCE.currentDay]).ToString();
         descriptionText.text = "";
 
         amountCg.alpha = 0f;
@@ -45,9 +63,6 @@ public class CutsceneController : MonoBehaviour
 
     IEnumerator ShowTextProcess()
     {
-        int fishHeld = FishManager.INSTANCE.getFishCount();
-        int fishNeeded = DayManager.INSTANCE.fishNeeded[DayManager.INSTANCE.currentDay - 1];
-
         bool success = fishHeld - fishNeeded >= 0;
 
         amountCg.DOFade(1f, 0.7f).SetUpdate(true);
@@ -106,6 +121,27 @@ public class CutsceneController : MonoBehaviour
     public void ShowTextDone()
     {
         UIOverlays.INSTANCE.TransitionDay();
+    }
+
+    public void PlaySeagull()
+    {
+        SoundManager.Instance.PlayClip(seagull, .25f);
+    }
+
+    public void PlayGurgle()
+    {
+        SoundManager.Instance.PlayClip(monsterGurgle, .25f);
+    }
+
+    public async void Failed()
+    {
+        SetFishValues();
+        if (fishHeld < fishNeeded)
+        {
+            SoundManager.Instance.PlayClip(monsterMunch, .75f);
+            await Task.Delay(2000);
+            SceneManager.LoadScene("Death");
+        }
     }
 
 }

@@ -10,6 +10,7 @@ public class FishingRodController : MonoBehaviour
     private float amount;
     private float visualAmount = 0f;
     private float barY;
+    private bool canDouble = false;
 
     [SerializeField] private float increaseSpeed;
     [SerializeField] private float decreaseSpeed;
@@ -23,7 +24,9 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private RectTransform barRt;
     [SerializeField] private RectTransform fishRt;
 
-    private float maxHeight = 500;
+    [SerializeField] float minPosY;
+    [SerializeField] float maxPosY;
+    
     [SerializeField] private float barVelocity;
 
     [SerializeField] private float fishProgress;
@@ -36,6 +39,8 @@ public class FishingRodController : MonoBehaviour
 
     [Header("Testing")]
     [SerializeField] private bool isTesting;
+
+    [SerializeField] private QTEController qteController; //AAAAAAAAAAAAAAAAAAAAAAAAA
 
     private PlayerController playerController;
 
@@ -72,7 +77,7 @@ public class FishingRodController : MonoBehaviour
 
     public void StartFish()
     {
-        slider.value = 0.3f;
+        slider.value = 0.7f;
         this.enabled = true;
         barVelocity = 0f;
         amount = 0f;
@@ -84,7 +89,7 @@ public class FishingRodController : MonoBehaviour
             () => this.enabled = true
         );
 
-
+        qteController.InitializeQTE();
     }
 
     // Update is called once per frame
@@ -125,28 +130,35 @@ public class FishingRodController : MonoBehaviour
         }
 
 
-        barY = Mathf.Lerp(0, maxHeight, visualAmount);
-        barRt.anchoredPosition = new Vector2(0, barY);
+        barY = Mathf.Lerp(minPosY, maxPosY, visualAmount);
+        barRt.anchoredPosition = new Vector2(barRt.anchoredPosition.x, barY);
         CheckIfFishIn();
+    }
+
+    public void DecreaseProgressBar(float increment)
+    {
+        slider.value += increment;
     }
 
     void CheckIfFishIn()
     {
-        float fishPos = fishRt.anchoredPosition.y + 25;
+        float fishPos = fishRt.anchoredPosition.y;
         float barCap = barY + barRt.sizeDelta.y;
+
+        Debug.Log($"{fishPos} {barY} {barCap}");
 
         if (fishPos >= barY && fishPos <= barCap)
         {
-            slider.value += progressIncrease * Time.deltaTime;
+            slider.value -= progressIncrease * Time.deltaTime;
         } else
         {
-            slider.value -= progressDecrease * Time.deltaTime;
+            slider.value += progressDecrease * Time.deltaTime;
         }
 
-        if (slider.value >= 1f)
+        if (slider.value <= 0f)
         {
             FishComplete();
-        } else if (slider.value <= 0f)
+        } else if (slider.value >= 1f)
         {
             FishFailed();
         }
@@ -156,12 +168,17 @@ public class FishingRodController : MonoBehaviour
     {
         this.enabled = false;
         Debug.Log("Fish Succeeded");
-        FishManager.INSTANCE.AddFish();
+
+        if (canDouble && UnityEngine.Random.value >= 0.5f)
+            FishManager.INSTANCE.AddFish(2);
+        else
+            FishManager.INSTANCE.AddFish(1);
+
         cg.DOFade(0f, 0.5f).OnComplete(
             () => UIOverlays.INSTANCE.ToggleFishingView(true)
         );
 
-
+        qteController.enabled = false;
         m_playerController.ToggleFreeLook(true, 0);
 
         SoundManager.Instance.PlayClip(fishGot, .25f);
@@ -178,10 +195,27 @@ public class FishingRodController : MonoBehaviour
             () => UIOverlays.INSTANCE.ToggleFishingView(true)
         );
 
+        qteController.enabled = false;
         m_playerController.ToggleFreeLook(true, 0);
 
         SoundManager.Instance.PlayClip(fishLost, 1f);
         SoundManager.Instance.StopSFX3();
         sfxPlaying= false;
     }
+
+
+    // upgrades
+    public void IncreaseBarSize(int increment)
+    {
+        Vector2 barSize = barRt.sizeDelta;
+        barSize.y = barSize.y + increment;
+        barRt.sizeDelta = barSize;
+        maxPosY -= increment;
+    }
+
+    public void CanDouble(bool canDouble)
+    {
+        this.canDouble = canDouble;
+    }
+
 }

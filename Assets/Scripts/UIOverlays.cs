@@ -53,6 +53,11 @@ public class UIOverlays : MonoBehaviour
         StartCoroutine("TransitionDayProcess"); 
     }
 
+    public void CutToBlack()
+    {
+        blackOverlay.alpha = 1f;
+    }
+
     IEnumerator TransitionDayProcess()
     {
         hideInCutscene.alpha = 0f;
@@ -63,12 +68,13 @@ public class UIOverlays : MonoBehaviour
         yield return new WaitForSecondsRealtime(2f);
         blackOverlay.DOFade(1f, 1f).OnComplete(
             () => {
-                DayManager.INSTANCE.TransitionDay(true);
                 titleText.text = "";
                 hideInCutscene.alpha = 1f;
                 blackOverlay.DOFade(0f,1f);
+
+                UpgradeManager.INSTANCE.OpenUpgrades();
             }
-            );
+        );
 
     }
 

@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource soundEffects1;
     public AudioSource soundEffects2;
     public AudioSource soundEffects3;
+    public AudioSource soundEffects4;
     public AudioSource ocean;
     public AudioSource walking;
 
@@ -74,6 +75,11 @@ public class SoundManager : MonoBehaviour
         soundEffects3.Stop();
     }
 
+    public void StopSFX4()
+    {
+        soundEffects4.Stop();
+    }
+
     public void StopWalking()
     {
         walking.Stop();
@@ -84,5 +90,6 @@ public class SoundManager : MonoBehaviour
         soundEffects1.Stop();
         soundEffects2.Stop();   
         soundEffects3.Stop();
+        soundEffects4.Stop();
     }
 }

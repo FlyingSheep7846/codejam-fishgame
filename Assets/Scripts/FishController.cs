@@ -5,8 +5,6 @@ public class FishController : MonoBehaviour
 {
     [SerializeField] RectTransform fishRt;
 
-    [SerializeField] private float fishMaxHeight;
-
     float amount;
     float lerpedAmount;
     float fishY;
@@ -22,6 +20,9 @@ public class FishController : MonoBehaviour
     public float baseErratic;
     public float erraticMultiplier;
 
+    [SerializeField] private float FishMinPos;
+    [SerializeField] private float FishMaxPos;
+
 
     void Update()
     {
@@ -35,8 +36,8 @@ public class FishController : MonoBehaviour
             inertia
         );
 
-        fishY = Mathf.Lerp(0, fishMaxHeight, lerpedAmount);
-        fishRt.anchoredPosition = new Vector2(0, fishY);
+        fishY = Mathf.Lerp(FishMinPos, FishMaxPos, lerpedAmount);
+        fishRt.anchoredPosition = new Vector2(fishRt.anchoredPosition.x, fishY);
     }
 
     void NewPosition(){

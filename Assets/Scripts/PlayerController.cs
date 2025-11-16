@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private float xRotation = 0f;    // pitch
     private float baseY;             // constant height
 
-    [SerializeField] private bool freeLook = true;
+    [SerializeField] private bool free = true;
 
     public AudioClip walking;
     private bool isWalking = false;
@@ -31,12 +31,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (freeLook) Look();
+        if (free) Look();
     }
 
     void FixedUpdate()
     {
-        Move();
+        if (free) Move();
         // LockHeight();
     }
 
@@ -106,9 +106,9 @@ public class PlayerController : MonoBehaviour
 
     public void ToggleFreeLook(bool free, float rotation)
     {
-        freeLook = free;
+        this.free = free;
 
-        if (!freeLook)
+        if (!free)
         {
             Vector3 rot = new Vector3(0, rotation, 0);
             transform.DORotate(rot, 0.5f);
