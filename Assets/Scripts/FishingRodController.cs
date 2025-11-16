@@ -39,6 +39,8 @@ public class FishingRodController : MonoBehaviour
     [Header("Testing")]
     [SerializeField] private bool isTesting;
 
+    [SerializeField] private QTEController qteController; //AAAAAAAAAAAAAAAAAAAAAAAAA
+
     private PlayerController playerController;
 
     void Awake()
@@ -86,7 +88,7 @@ public class FishingRodController : MonoBehaviour
             () => this.enabled = true
         );
 
-
+        qteController.InitializeQTE();
     }
 
     // Update is called once per frame
@@ -128,7 +130,7 @@ public class FishingRodController : MonoBehaviour
 
 
         barY = Mathf.Lerp(minPosY, maxPosY, visualAmount);
-        barRt.anchoredPosition = new Vector2(0, barY);
+        barRt.anchoredPosition = new Vector2(barRt.anchoredPosition.x, barY);
         CheckIfFishIn();
     }
 
@@ -142,6 +144,8 @@ public class FishingRodController : MonoBehaviour
         float fishPos = fishRt.anchoredPosition.y;
         float barCap = barY + barRt.sizeDelta.y;
 
+        Debug.Log($"{fishPos} {barY} {barCap}");
+
         if (fishPos >= barY && fishPos <= barCap)
         {
             slider.value -= progressIncrease * Time.deltaTime;
@@ -153,7 +157,7 @@ public class FishingRodController : MonoBehaviour
         if (slider.value <= 0f)
         {
             FishComplete();
-        } else if (slider.value >= 0f)
+        } else if (slider.value >= 1f)
         {
             FishFailed();
         }
@@ -168,7 +172,7 @@ public class FishingRodController : MonoBehaviour
             () => UIOverlays.INSTANCE.ToggleFishingView(true)
         );
 
-
+        qteController.enabled = false;
         m_playerController.ToggleFreeLook(true, 0);
 
         SoundManager.Instance.PlayClip(fishGot, .25f);
@@ -185,6 +189,7 @@ public class FishingRodController : MonoBehaviour
             () => UIOverlays.INSTANCE.ToggleFishingView(true)
         );
 
+        qteController.enabled = false;
         m_playerController.ToggleFreeLook(true, 0);
 
         SoundManager.Instance.PlayClip(fishLost, 1f);

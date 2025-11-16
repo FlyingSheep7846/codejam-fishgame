@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,18 +17,7 @@ public class QTEController : MonoBehaviour
     KeyCode[] possibleQtes = {KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D};
     private KeyCode currentQte = KeyCode.None;
 
-    private FishingRodController _fishingRodController;
-    private FishingRodController fishingRodController
-    {
-        get
-        {
-            if (_fishingRodController == null) 
-                _fishingRodController = GetComponent<FishingRodController>();
-
-            return _fishingRodController;
-        }
-    }
-
+    public FishingRodController fishingRodController;
 
     private bool isInQte = false;
 
@@ -59,25 +49,34 @@ public class QTEController : MonoBehaviour
         }
     }
 
+    public void InitializeQTE()
+    {
+        isInQte = false;
+        qteIntervalTimer = 5f;
+
+        this.enabled = false;
+    }
+
     void StartQTE()
     {
-        timer = 1.5f;
+        timer = QteTime;
         currentQte = possibleQtes[Random.Range(0, 4)];
         isInQte = true;
+
+        qteCg.alpha = 1f;
     }
 
     void CompleteQTE()
     {
         isInQte = false;
-
+        qteCg.DOFade(0f,0.5f);
     }
 
     void FailQTE()
     {
         isInQte = false;
-        _fishingRodController.DecreaseProgressBar(failedDecreaseAmount);
-        
-
+        fishingRodController.DecreaseProgressBar(failedDecreaseAmount);
+        qteCg.DOFade(0f,0.5f);
     }
 
     void CheckForInput(KeyCode qte)

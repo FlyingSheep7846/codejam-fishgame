@@ -37,7 +37,7 @@ public class FishController : MonoBehaviour
         );
 
         fishY = Mathf.Lerp(FishMinPos, FishMaxPos, lerpedAmount);
-        fishRt.anchoredPosition = new Vector2(0, fishY);
+        fishRt.anchoredPosition = new Vector2(fishRt.anchoredPosition.x, fishY);
     }
 
     void NewPosition(){
