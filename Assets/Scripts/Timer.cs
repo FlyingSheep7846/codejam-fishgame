@@ -37,7 +37,12 @@ public class Timer : MonoBehaviour
         return time;
     }
 
-    public IEnumerator TimerReset(float duration)
+    public void TimerReset()
+    {
+        StartCoroutine(TimerResetProcess(3f));
+    }
+
+    public IEnumerator TimerResetProcess(float duration)
     {
         float elapsed = 0f;
         while (elapsed < duration)
