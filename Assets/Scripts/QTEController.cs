@@ -75,7 +75,7 @@ public class QTEController : MonoBehaviour
 
         qteCg.alpha = 1f;
         slider.value = 1f;
-        SoundManager.Instance.PlayClip(ring, 1f);
+        SoundManager.Instance.PlayClip(ring, .5f);
     }
 
     void CompleteQTE()
