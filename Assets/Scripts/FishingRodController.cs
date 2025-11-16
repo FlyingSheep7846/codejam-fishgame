@@ -145,7 +145,7 @@ public class FishingRodController : MonoBehaviour
         float fishPos = fishRt.anchoredPosition.y;
         float barCap = barY + barRt.sizeDelta.y;
 
-        Debug.Log($"{fishPos} {barY} {barCap}");
+        // Debug.Log($"{fishPos} {barY} {barCap}");
 
         if (fishPos >= barY && fishPos <= barCap)
         {

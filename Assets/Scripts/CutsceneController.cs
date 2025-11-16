@@ -71,7 +71,7 @@ public class CutsceneController : MonoBehaviour
         subtractCg.DOFade(1f, 0.7f).SetUpdate(true);
         yield return new WaitForSecondsRealtime(0.7f);
 
-        StartCoroutine(TypewriterSubtract(subtractText, fishHeld, fishHeld - fishNeeded, 1f));
+        StartCoroutine(TypewriterSubtract(amountText, fishHeld, fishHeld - fishNeeded, 1f));
         yield return StartCoroutine(TypewriterSubtract(subtractText, -fishNeeded, 0, 1f));
 
 

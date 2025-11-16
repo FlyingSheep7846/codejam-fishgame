@@ -13,7 +13,7 @@ public class DayManager : MonoBehaviour
     private bool sfx1Playing = false;   
 
     private GameObject player;
-    private GameObject environmentCamera;
+    [SerializeField] private GameObject environmentCamera;
 
     [SerializeField] Transform playerRespawnSpot;
 
@@ -25,7 +25,8 @@ public class DayManager : MonoBehaviour
         INSTANCE = this;
 
         player = GameObject.FindWithTag("Player");
-        environmentCamera = GameObject.FindWithTag("MainCamera");
+        // environmentCamera = GameObject.FindWithTag("MainCamera");
+        Debug.Log($"grahhhhh {player} ermm {environmentCamera} asdasdas");
     }
 
     void Start(){
