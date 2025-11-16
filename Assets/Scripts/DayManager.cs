@@ -52,8 +52,6 @@ public class DayManager : MonoBehaviour
         }
         if(Timer.INSTANCE.time < 0f)
         {
-            //sfx1Playing = false;
-            //sfx2Playing= false;
             if (!CameraShaker.Instance.isShaking)
             {
                 CameraShaker.Instance.ShakeCamera();
@@ -94,6 +92,9 @@ public class DayManager : MonoBehaviour
             FishManager.INSTANCE.setFishCount(0);
             currentDay++;
             TransitionDay(true);
+            sfx1Playing = false;
+            sfx2Playing = false;
+            CameraShaker.Instance.isShaking = false;
 
             // tweak environment shit here ?
         }
