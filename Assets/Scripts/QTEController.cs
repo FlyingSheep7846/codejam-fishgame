@@ -14,6 +14,8 @@ public class QTEController : MonoBehaviour
     // editable values
     public float QteTime;
     public float QteInterval;
+
+    private float successIncreaseAmount = 0f;
     public float failedDecreaseAmount = 0.15f;
 
     KeyCode[] possibleQtes = {KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D};
@@ -76,6 +78,7 @@ public class QTEController : MonoBehaviour
     {
         isInQte = false;
         qteIntervalTimer = QteInterval;
+        fishingRodController.DecreaseProgressBar(-successIncreaseAmount);
         qteCg.DOFade(0f,0.5f);
     }
 
@@ -108,5 +111,24 @@ public class QTEController : MonoBehaviour
                 return;
             }
         }
+    }
+
+    // --------------- upgrades ----------------
+
+    public void IncreaseQTETime(float time)
+    {
+        QteTime += time;
+        QteInterval += time;
+    }
+
+    public void QTESpecialEffects()
+    {
+        failedDecreaseAmount *= 2;
+        successIncreaseAmount += 0.15f;
+    }
+
+    public void IncrementQTEEffect(float increment)
+    {
+        failedDecreaseAmount -= increment;
     }
 }

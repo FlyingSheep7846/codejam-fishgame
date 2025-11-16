@@ -10,6 +10,7 @@ public class FishingRodController : MonoBehaviour
     private float amount;
     private float visualAmount = 0f;
     private float barY;
+    private bool canDouble = false;
 
     [SerializeField] private float increaseSpeed;
     [SerializeField] private float decreaseSpeed;
@@ -167,7 +168,12 @@ public class FishingRodController : MonoBehaviour
     {
         this.enabled = false;
         Debug.Log("Fish Succeeded");
-        FishManager.INSTANCE.AddFish();
+
+        if (canDouble && UnityEngine.Random.value >= 0.5f)
+            FishManager.INSTANCE.AddFish(2);
+        else
+            FishManager.INSTANCE.AddFish(1);
+
         cg.DOFade(0f, 0.5f).OnComplete(
             () => UIOverlays.INSTANCE.ToggleFishingView(true)
         );
@@ -196,4 +202,20 @@ public class FishingRodController : MonoBehaviour
         SoundManager.Instance.StopSFX3();
         sfxPlaying= false;
     }
+
+
+    // upgrades
+    public void IncreaseBarSize(int increment)
+    {
+        Vector2 barSize = barRt.sizeDelta;
+        barSize.y = barSize.y + increment;
+        barRt.sizeDelta = barSize;
+        maxPosY -= increment;
+    }
+
+    public void CanDouble(bool canDouble)
+    {
+        this.canDouble = canDouble;
+    }
+
 }

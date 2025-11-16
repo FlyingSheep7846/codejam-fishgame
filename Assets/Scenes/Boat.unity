@@ -371,9 +371,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1391435384301081880, guid: 5484e91a8aa52074197b7d49c5ef67e7, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2113743834936262039, guid: 5484e91a8aa52074197b7d49c5ef67e7, type: 3}
       propertyPath: m_Name
       value: Upgrades
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222349701691731163, guid: 5484e91a8aa52074197b7d49c5ef67e7, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363379616501483887, guid: 5484e91a8aa52074197b7d49c5ef67e7, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3531262876784494507, guid: 5484e91a8aa52074197b7d49c5ef67e7, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410176671234481301, guid: 5484e91a8aa52074197b7d49c5ef67e7, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477868205353927123, guid: 5484e91a8aa52074197b7d49c5ef67e7, type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4972392273853497725, guid: 5484e91a8aa52074197b7d49c5ef67e7, type: 3}
       propertyPath: m_Pivot.x

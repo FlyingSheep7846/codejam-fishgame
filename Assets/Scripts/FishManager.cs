@@ -28,9 +28,9 @@ public class FishManager : MonoBehaviour
         UIOverlays.INSTANCE.SetFish(fishCount);
     }
 
-    public void AddFish()
+    public void AddFish(int fish)
     {
-        setFishCount(fishCount + 1);
+        setFishCount(fishCount + fish);
     }
 
     public float getFishNeeded()

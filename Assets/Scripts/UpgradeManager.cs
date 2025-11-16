@@ -14,9 +14,16 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private RectTransform upgradeParent;
     [SerializeField] private RectTransform[] upgrades; 
 
+
+    private FishingRodController fishingRodController;
+    private QTEController qteController;
+    private FishController fishController;
+
     void Awake()
     {
         INSTANCE = this;
+
+        fishingRodController = FindAnyObjectByType<FishingRodController>();
 
         upgrades = GetComponentsInChildren<UpgradeButtonComponent>()
             .Select(a => a.GetComponent<RectTransform>())
@@ -75,28 +82,36 @@ public class UpgradeManager : MonoBehaviour
     {
         switch (upgrade)
         {
+            // larger bar
             case 0:
-                Debug.Log("0");
+                fishingRodController.IncreaseBarSize(100);
                 break;
 
+            // smaller bar, faster catch
             case 1:
                 Debug.Log("1");
+                fishingRodController.IncreaseBarSize(-75);
                 break;
 
+            // qtes longer
             case 2:
-                Debug.Log("2");
+                qteController.IncreaseQTETime(1.5f);
                 break;
 
+            // qtes assist but deal more damage on fail
             case 3:
-                Debug.Log("3");
+                qteController.QTESpecialEffects();
                 break;
 
+            // qtes are less impactful
             case 4:
-                Debug.Log("4");
+                qteController.IncrementQTEEffect(0.7f);
                 break;
 
+            // challenging fishing but chance to double reward
             case 5:
-                Debug.Log("");
+                fishingRodController.CanDouble(true);
+                // make more challenging
                 break;
 
             default:

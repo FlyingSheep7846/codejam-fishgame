@@ -107,7 +107,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.69411767, g: 0.5254902, b: 0.78039217, a: 1}
     m_PressedColor: {r: 0.54509807, g: 0.42352942, b: 0.7411765, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.3529412, g: 0.32156864, b: 0.39607844, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -152,6 +152,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeButtonComponent
   right: 0
   upgradeId: 0
+  image: {fileID: 6734180700090931035}
+  titleText: {fileID: 5246753515234728322}
+  descriptionText: {fileID: 1353427715255062440}
 --- !u!225 &980452859268897185
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -198,8 +201,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -50.00003}
-  m_SizeDelta: {x: -200, y: -100}
+  m_AnchoredPosition: {x: -87.5, y: -50.00003}
+  m_SizeDelta: {x: -225, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3503416636209462147
 CanvasRenderer:
@@ -256,8 +259,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
