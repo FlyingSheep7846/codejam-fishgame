@@ -39,7 +39,9 @@ public class UpgradeManager : MonoBehaviour
         Debug.Log(upgrades.Length);
         foreach (RectTransform rt in upgrades)
         {
-            rt.GetComponent<CanvasGroup>().alpha = 0f;
+            var cg = rt.GetComponent<CanvasGroup>();
+            cg.alpha = 0f;
+            cg.interactable = true;
             rt.DOAnchorPosY(-50f, 0f).SetRelative(true);
         }
 
@@ -68,7 +70,9 @@ public class UpgradeManager : MonoBehaviour
 
         foreach (RectTransform rt in upgrades)
         {
-            rt.GetComponent<CanvasGroup>().DOFade(0f, 0.4f);
+            var cg = rt.GetComponent<CanvasGroup>();
+            cg.DOFade(0f, 0.4f);
+            cg.interactable = false;
             yield return new WaitForSecondsRealtime(0.2f);
         }
 
