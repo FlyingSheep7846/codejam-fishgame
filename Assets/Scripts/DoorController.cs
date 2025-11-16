@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
@@ -28,10 +28,5 @@ public class DoorController : MonoBehaviour
             UIOverlays.INSTANCE.ToggleEndDayIndicator(false);
             monsterManager.enabled = false;
         }   
-    }
-
-    void OnTriggerStay()
-    {
-        
     }
 }

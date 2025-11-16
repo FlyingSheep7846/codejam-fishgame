@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 6
   mouseSensitivity: 100
-  free: 1
+  free: 0
   walking: {fileID: 8300000, guid: 5991f53a05e9456419f9551266857fba, type: 3}
 --- !u!54 &789544713420730377
 Rigidbody:
