@@ -91,5 +91,6 @@ public class Tutorial : MonoBehaviour
         Timer.INSTANCE.running = true;
         playerController.ToggleFreeLook(true, 0);
         Cursor.lockState = CursorLockMode.Locked;
+        gameObject.SetActive(false);
     }
 }
