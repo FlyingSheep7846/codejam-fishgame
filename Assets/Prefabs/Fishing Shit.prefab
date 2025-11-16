@@ -1,5 +1,56 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2530637467931023315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8350918583970149552}
+  - component: {fileID: 1477597377886775746}
+  m_Layer: 5
+  m_Name: Fishing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8350918583970149552
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530637467931023315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4272755220212381185}
+  - {fileID: 1282538885285526242}
+  - {fileID: 41207684463702917}
+  m_Father: {fileID: 1581193903775115676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1477597377886775746
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530637467931023315}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2790032184413501916
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,7 +86,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -29, y: 184}
-  m_SizeDelta: {x: 75, y: 150}
+  m_SizeDelta: {x: 75, y: 240}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8372352497146334346
 CanvasRenderer:
@@ -107,9 +158,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4272755220212381185}
-  - {fileID: 1282538885285526242}
-  - {fileID: 41207684463702917}
+  - {fileID: 8350918583970149552}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -194,6 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   canFish: 0
   waterSplash: {fileID: 8300000, guid: 417bd59553632b3448a0f3b6eda7424c, type: 3}
+  monsterRoar: {fileID: 0}
+  monsterKill: {fileID: 0}
 --- !u!1 &3933590057742730199
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +257,7 @@ GameObject:
   - component: {fileID: 3501372812751329349}
   - component: {fileID: 1553902299459475355}
   - component: {fileID: 1298127472697409504}
+  - component: {fileID: 4473535327199820704}
   m_Layer: 5
   m_Name: QTE
   m_TagString: Untagged
@@ -220,13 +272,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3933590057742730199}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7150299376445768980}
-  m_Father: {fileID: 1581193903775115676}
+  m_Father: {fileID: 8350918583970149552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -278,11 +330,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3933590057742730199}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b8a6d6d159bfc644b270b7a29dcb7b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  qteCg: {fileID: 4473535327199820704}
+  slider: {fileID: 691259857802789487}
+  QteTime: 1.5
+  failedDecreaseAmount: 0.15
+  fishingRodController: {fileID: 4221467109386697756}
+--- !u!225 &4473535327199820704
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3933590057742730199}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &4594551744999798507
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,16 +820,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6628198966716842149}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 0.79999995}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6527235378208382665}
   - {fileID: 7834093176738908290}
   - {fileID: 2771735438295682871}
   - {fileID: 2189485014351810840}
-  m_Father: {fileID: 1581193903775115676}
+  m_Father: {fileID: 8350918583970149552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -782,7 +851,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6628198966716842149}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43cd12cacf9df2b41b2b70be0a488398, type: 3}
   m_Name: 
@@ -793,17 +862,18 @@ MonoBehaviour:
   maxSpeed: 5
   resetMinSpeed: -0.1
   resetMaxSpeed: 0.1
-  barRt: {fileID: 0}
-  fishRt: {fileID: 2049371476834766149}
+  barRt: {fileID: 6527235378208382665}
+  fishRt: {fileID: 7834093176738908290}
   minPosY: 184
-  maxPosY: 927
+  maxPosY: 837
   barVelocity: 0
   fishProgress: 0
   slider: {fileID: 5299990455645151186}
-  cg: {fileID: 1985893162291600062}
+  cg: {fileID: 1477597377886775746}
   progressIncrease: 0.2
   progressDecrease: 0.1
-  isTesting: 1
+  isTesting: 0
+  qteController: {fileID: 1298127472697409504}
   reeling: {fileID: 8300000, guid: a7b21bcb155051246865b5ba9f4e2fbd, type: 3}
   fishGot: {fileID: 8300000, guid: 73f52a36f38b373439cdf30676942a92, type: 3}
   fishLost: {fileID: 8300000, guid: 54b0734e047b52d4c9b74b6be00bbf15, type: 3}
@@ -1090,7 +1160,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9044089254722117184}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1098,7 +1168,7 @@ RectTransform:
   - {fileID: 6160016303900036418}
   - {fileID: 1624877872879038281}
   - {fileID: 2049371476834766149}
-  m_Father: {fileID: 1581193903775115676}
+  m_Father: {fileID: 8350918583970149552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1152,7 +1222,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
