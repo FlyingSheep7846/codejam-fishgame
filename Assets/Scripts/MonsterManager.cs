@@ -25,6 +25,7 @@ public class MonsterManager : MonoBehaviour
             SoundManager.Instance.PlayClip(door, 1f);
             SoundManager.Instance.StopMusicAndOcean();
             SoundManager.Instance.StopAllSFX();
+            CameraShaker.Instance.StopShaking();
             
         }
     }

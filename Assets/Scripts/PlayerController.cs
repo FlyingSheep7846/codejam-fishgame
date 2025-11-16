@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (free) Move();
-        // LockHeight();
+        LockHeight();
     }
 
     void Look()

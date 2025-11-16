@@ -46,10 +46,14 @@ public class DayManager : MonoBehaviour
             SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects1, heartbeat1, 1f);
             SoundManager.Instance.PlayLoop(SoundManager.Instance.soundEffects2, breathing, 1f);
         }
-        if(Timer.INSTANCE.time == 0f)
+        if(Timer.INSTANCE.time < 0f)
         {
-            sfx1Playing = false;
-            sfx2Playing= false;
+            //sfx1Playing = false;
+            //sfx2Playing= false;
+            if (!CameraShaker.Instance.isShaking)
+            {
+                CameraShaker.Instance.ShakeCamera();
+            }
         }
     }
 
