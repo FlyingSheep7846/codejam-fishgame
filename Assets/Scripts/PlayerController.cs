@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         cameraTransform = transform.GetChild(0);
 
         rb.freezeRotation = true;   // prevent physics from tipping us over
-        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.lockState = CursorLockMode.Locked;
 
         baseY = transform.position.y;  // lock height
     }

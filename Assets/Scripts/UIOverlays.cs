@@ -1,9 +1,7 @@
 using TMPro;
-using UnityEditor.Rendering;
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
-using System;
 using System.Collections.Generic;
 
 public class UIOverlays : MonoBehaviour
