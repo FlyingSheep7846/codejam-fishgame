@@ -4,6 +4,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CutsceneController : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class CutsceneController : MonoBehaviour
     private CanvasGroup subtractCg;
 
     private string SUCCESS_TEXT = "THE MONSTER WAS SATISFIED TODAY.";
+    private string SUCCESS_TEXT2 = "TOMORROW IT WILL BE HUNGRIER.";
     private string FAILED_TEXT = "THE MONSTER IS STILL HUNGRY...";
 
     public AudioClip seagull;
@@ -77,8 +79,18 @@ public class CutsceneController : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.4f);
 
-        yield return StartCoroutine(TypewriterProcess(descriptionText, 
-            success ? SUCCESS_TEXT : FAILED_TEXT, 1f));
+        if (success)
+        {
+            yield return StartCoroutine(TypewriterProcess(descriptionText, SUCCESS_TEXT, 1f));
+            yield return new WaitForSecondsRealtime(0.5f);
+            yield return StartCoroutine(TypewriterClear(descriptionText, 0.5f)); 
+            yield return new WaitForSecondsRealtime(0.5f);
+            yield return StartCoroutine(TypewriterProcess(descriptionText, SUCCESS_TEXT2, 1f));
+
+        } else
+        {
+            yield return StartCoroutine(TypewriterProcess(descriptionText, FAILED_TEXT, 1f));
+        }
     }
 
     IEnumerator TypewriterProcess(TextMeshProUGUI tmp, string text, float duration)
@@ -89,6 +101,20 @@ public class CutsceneController : MonoBehaviour
         for (int i = 0; i < text.Length; i++)
         {
             tmp.text += text[i];
+            yield return new WaitForSecondsRealtime(wait);
+        }
+    }
+
+    IEnumerator TypewriterClear(TextMeshProUGUI tmp, float duration)
+    {
+        string fullText = tmp.text;
+        int length = fullText.Length;
+
+        float wait = duration / length;
+
+        for (int i = length; i > 0; i--)
+        {
+            tmp.text = fullText.Substring(0, i - 1);
             yield return new WaitForSecondsRealtime(wait);
         }
     }
@@ -138,9 +164,11 @@ public class CutsceneController : MonoBehaviour
         SetFishValues();
         if (fishHeld < fishNeeded)
         {
+            UIOverlays.INSTANCE.FadeBlack();
+
             CameraShaker.Instance.StopShaking();
             SoundManager.Instance.PlayClip(monsterMunch, .75f);
-            await Task.Delay(2000);
+            await Task.Delay(1500);
             SceneManager.LoadScene("Death");
         }
     }

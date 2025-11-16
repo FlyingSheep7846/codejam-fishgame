@@ -59,6 +59,7 @@ public class QTEController : MonoBehaviour
     {
         isInQte = false;
         qteIntervalTimer = 5f;
+        qteCg.alpha = 0f;   
 
         this.enabled = true;
     }

@@ -84,6 +84,9 @@ public class UpgradeManager : MonoBehaviour
         backgroundCg.DOFade(0f, 0.5f);
 
         Cursor.lockState = CursorLockMode.Locked;
+        
+        // start the day
+        DayManager.INSTANCE.BeginDay();
     }
 
     public void SelectUpgrade(int upgrade)
@@ -127,9 +130,5 @@ public class UpgradeManager : MonoBehaviour
         }
 
         StartCoroutine("CloseUpgrades");
-
-        // start the day
-        DayManager.INSTANCE.BeginDay();
-
     }
 }

@@ -19,13 +19,13 @@ public class Timer : MonoBehaviour
 
     public void DecreaseTime(float increment = 5f)
     {
-        if (running) time -= increment;
+        time -= increment;
     }
 
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
+        if (running) time -= Time.deltaTime;
         if (time < 0)
         {
             dayOver = true;

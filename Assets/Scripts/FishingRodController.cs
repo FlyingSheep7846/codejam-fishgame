@@ -43,6 +43,7 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private QTEController qteController; //AAAAAAAAAAAAAAAAAAAAAAAAA
 
     private PlayerController playerController;
+    private Animator animator;
 
     void Awake()
     {
@@ -55,7 +56,9 @@ public class FishingRodController : MonoBehaviour
         {
             this.enabled = false;
             cg.alpha = 0f;
-        }     
+        }    
+
+        animator = GameObject.FindWithTag("Player").GetComponentInChildren<Animator>(); 
     }
 
     public PlayerController m_playerController
@@ -90,6 +93,7 @@ public class FishingRodController : MonoBehaviour
         );
 
         qteController.InitializeQTE();
+        animator.SetTrigger("Cast");
     }
 
     // Update is called once per frame
@@ -184,6 +188,8 @@ public class FishingRodController : MonoBehaviour
         SoundManager.Instance.PlayClip(fishGot, .25f);
         SoundManager.Instance.StopSFX3();
         sfxPlaying = false;
+
+        animator.SetTrigger("Reel");
     }
 
     void FishFailed()
@@ -201,6 +207,8 @@ public class FishingRodController : MonoBehaviour
         SoundManager.Instance.PlayClip(fishLost, 1f);
         SoundManager.Instance.StopSFX3();
         sfxPlaying= false;
+
+        animator.SetTrigger("Fail");
     }
 
 

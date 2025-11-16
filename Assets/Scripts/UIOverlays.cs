@@ -67,6 +67,11 @@ public class UIOverlays : MonoBehaviour
         blackOverlay.alpha = 1f;
     }
 
+    public void FadeBlack(float duration = 0.8f)
+    {
+        blackOverlay.DOFade(1f, duration);   
+    }
+
     IEnumerator TransitionDayProcess()
     {
         hideInCutscene.alpha = 0f;
