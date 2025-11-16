@@ -207,6 +207,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2049371476834766149, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049371476834766149, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049371476834766149, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3641853401783961593, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -218,6 +230,26 @@ PrefabInstance:
     - target: {fileID: 3908965891840952800, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
       propertyPath: m_Name
       value: Fishing Shit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160470256846502702, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5160470256846502702, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787978958505639413, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787978958505639413, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787978958505639413, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -525,7 +557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   moveSpeed: 6
   mouseSensitivity: 100
-  freeLook: 1
+  free: 1
   walking: {fileID: 8300000, guid: 5991f53a05e9456419f9551266857fba, type: 3}
 --- !u!54 &330585549
 Rigidbody:
@@ -1139,6 +1171,7 @@ MonoBehaviour:
   soundEffects1: {fileID: 264473963}
   soundEffects2: {fileID: 1662157529}
   soundEffects3: {fileID: 1698863693}
+  soundEffects4: {fileID: 0}
   ocean: {fileID: 718131400}
   walking: {fileID: 830686301}
 --- !u!1 &963661736
@@ -1365,6 +1398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ae9d06b873d374caa896e3d6f73e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  door: {fileID: 0}
 --- !u!1 &1345186308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,8 +1556,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   ambient: {fileID: 8300000, guid: b55a050efa669b24d840d176100c2a5f, type: 3}
   heartbeat1: {fileID: 8300000, guid: 97279221a26d39147a965507e1046a1e, type: 3}
+  heartbeat2: {fileID: 0}
   breathing: {fileID: 8300000, guid: a56bf2e08fa563449b9a77cb23c17a35, type: 3}
   ocean: {fileID: 8300000, guid: e37129aadac69324198c2d52c147c1f7, type: 3}
+  player: {fileID: 0}
+  environmentCamera: {fileID: 0}
+  playerRespawnSpot: {fileID: 0}
   fishNeeded: 
   currentDay: 0
 --- !u!82 &1449770600 stripped
