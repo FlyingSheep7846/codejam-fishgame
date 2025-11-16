@@ -45,7 +45,7 @@ public class Tutorial : MonoBehaviour
         if (Debounce) return;
         Debounce = true;
 
-        int newSlide = 0;
+        int newSlide = Mathf.Clamp(currentSlide + direction, 0, pages.Count - 1);
         if (newSlide == currentSlide) return;
 
         pages[currentSlide].DOFade(0f, 0.5f).OnComplete(
