@@ -68,7 +68,7 @@ public class DayManager : MonoBehaviour
             position.y = player.transform.position.y;
 
             player.transform.position = position;
-            player.transform.eulerAngles = new Vector3(0, -90, 0); 
+            player.transform.eulerAngles = new Vector3(0, 90, 0); 
         }
 
         public void TransitionDay(bool isPlayMode)
