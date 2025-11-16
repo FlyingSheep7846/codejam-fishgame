@@ -244,7 +244,7 @@ MonoBehaviour:
   canFish: 0
   waterSplash: {fileID: 8300000, guid: 417bd59553632b3448a0f3b6eda7424c, type: 3}
   monsterRoar: {fileID: 0}
-  monsterKill: {fileID: 0}
+  monsterKill: {fileID: 8300000, guid: 8bf8763246a7d134dafb7426c2b73880, type: 3}
 --- !u!1 &3933590057742730199
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +877,7 @@ MonoBehaviour:
   isTesting: 0
   qteController: {fileID: 1298127472697409504}
   reeling: {fileID: 8300000, guid: a7b21bcb155051246865b5ba9f4e2fbd, type: 3}
-  fishGot: {fileID: 8300000, guid: 73f52a36f38b373439cdf30676942a92, type: 3}
+  fishGot: {fileID: 8300000, guid: 47ad209cec39201459b0d1c6e8e575e3, type: 3}
   fishLost: {fileID: 8300000, guid: 54b0734e047b52d4c9b74b6be00bbf15, type: 3}
 --- !u!225 &1985893162291600062
 CanvasGroup:

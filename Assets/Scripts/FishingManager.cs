@@ -36,10 +36,12 @@ public class FishingManager : MonoBehaviour
     {
         if (Timer.INSTANCE.time < 0f)
         {
-            int random = Random.Range(0, 30);
+            int random = Random.Range(0, 20);
             float scale = Timer.INSTANCE.time + random;
             if (scale < 0)
             {
+                SoundManager.Instance.StopAllSFX();
+                SoundManager.Instance.StopMusicAndOcean();
                 Death();
             }
 
