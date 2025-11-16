@@ -97,8 +97,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.7348416, z: 1}
-  m_Center: {x: 0, y: -0.36742067, z: 0}
+  m_Size: {x: 0.6, y: 1.7348416, z: 0.5096121}
+  m_Center: {x: 6.8296267e-17, y: -0.36742067, z: 0.24519402}
 --- !u!1 &6273507635060534034
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +128,7 @@ Transform:
   m_GameObject: {fileID: 6273507635060534034}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -175,7 +175,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 2cd2032c607ea44819554f994c22fdbf, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -251,3 +251,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraShaker
   shakeM: 0.02
   shakeF: 25
+  isShaking: 0
