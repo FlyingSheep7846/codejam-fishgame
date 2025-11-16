@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour
 
     public void PlayMain()
     {
-        SceneManager.LoadScene("Boat");
+        SceneManager.LoadScene("Boat 2");
     }
 
     public void Quit()

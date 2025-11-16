@@ -78,7 +78,7 @@ public class tweakVFX : MonoBehaviour
         sky.SetColor("_CloudColor", Color.Lerp(startCloud, endCloud, x));
 
 
-        light.transform.rotation = Quaternion.Euler(Vector3.Lerp(new Vector3(50, -37.2f, 0), new Vector3(200, -37.2f, 0), x));
+        light.transform.rotation = Quaternion.Euler(Vector3.Lerp(new Vector3(50, -37.2f, 0), new Vector3(-72, -37.2f, 0), x));
 
 
     }
