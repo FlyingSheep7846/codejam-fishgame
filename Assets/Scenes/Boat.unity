@@ -223,6 +223,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fishing Shit
       objectReference: {fileID: 0}
+    - target: {fileID: 4221467109386697756, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
+      propertyPath: isTesting
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5160470256846502702, guid: 3a06a6cfde287dc448485a72db66fdb5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

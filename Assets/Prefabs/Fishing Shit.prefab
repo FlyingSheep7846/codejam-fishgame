@@ -338,8 +338,10 @@ MonoBehaviour:
   qteCg: {fileID: 4473535327199820704}
   slider: {fileID: 691259857802789487}
   QteTime: 1.5
+  QteInterval: 5
   failedDecreaseAmount: 0.15
   fishingRodController: {fileID: 4221467109386697756}
+  text: {fileID: 8639074656088652405}
 --- !u!225 &4473535327199820704
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -136,7 +136,7 @@ public class FishingRodController : MonoBehaviour
 
     public void DecreaseProgressBar(float increment)
     {
-        slider.value -= increment;
+        slider.value += increment;
     }
 
     void CheckIfFishIn()
