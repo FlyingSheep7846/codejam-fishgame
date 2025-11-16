@@ -176,7 +176,7 @@ public class CutsceneController : MonoBehaviour
 
             CameraShaker.Instance.StopShaking();
             SoundManager.Instance.PlayClip(monsterMunch, .75f);
-            await Task.Delay(1500);
+            await Task.Delay(2000);
             SceneManager.LoadScene("Death");
         }
     }
